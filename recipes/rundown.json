@@ -1,0 +1,29 @@
+{
+  "name": "The Rundown (Supertools)",
+  "slug": "rundown",
+  "submit_url": "https://www.rundown.ai/submit",
+  "homepage": "https://www.rundown.ai",
+  "dr": 70,
+  "tier": "auto",
+  "requires_auth": false,
+  "verify": { "type": "search", "url": "https://www.rundown.ai/search?q={name}" },
+  "submit_selector": "button[type='submit']",
+  "wait_ms": 8000,
+  "fields": [
+    { "name": "name", "type": "text", "required": true, "source": "name",
+      "selectors": ["input[placeholder*='Tool name']"] },
+    { "name": "description", "type": "textarea", "required": false, "source": "ai.tagline",
+      "selectors": ["textarea[placeholder*='sentences']"] },
+    { "name": "price", "type": "text", "required": true, "source": "pricing",
+      "selectors": ["input[placeholder*='Free, paid']"] },
+    { "name": "category", "type": "text", "required": true, "source": "ai.category",
+      "selectors": ["input[placeholder*='category']"] },
+    { "name": "url", "type": "url", "required": true, "source": "url",
+      "selectors": ["input[placeholder*='home page']"] },
+    { "name": "email", "type": "email", "required": true, "source": "email",
+      "selectors": ["input[placeholder*='creator email']", "input[type='email'][placeholder*='email']"] },
+    { "name": "thumbnail", "type": "file", "required": true, "source": "",
+      "file_path": "/Users/f/GitHub/deepseek-harness-desktop/assets/screenshots/desktop-home.png",
+      "selectors": ["input[type='file']"] }
+  ]
+}

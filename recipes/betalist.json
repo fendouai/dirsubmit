@@ -1,0 +1,23 @@
+{
+  "name": "BetaList",
+  "slug": "betalist",
+  "submit_url": "https://betalist.com/submit",
+  "homepage": "https://betalist.com",
+  "dr": 70,
+  "tier": "semi",
+  "requires_auth": true,
+  "verify": { "type": "search", "url": "https://betalist.com/?q={name}" },
+  "submit_selector": "input[type='submit']",
+  "fields": [
+    { "name": "name", "type": "text", "required": true, "source": "name",
+      "selectors": ["input[name='name']", "#startup_name"] },
+    { "name": "url", "type": "url", "required": true, "source": "url",
+      "selectors": ["input[name='url']", "input[name='website']"] },
+    { "name": "tagline", "type": "text", "required": true, "source": "ai.tagline",
+      "selectors": ["input[name='tagline']"] },
+    { "name": "description", "type": "textarea", "required": true, "source": "ai.description",
+      "selectors": ["textarea[name='description']", "textarea"] },
+    { "name": "category", "type": "select", "required": true, "source": "ai.category",
+      "selectors": ["select[name='category']"] }
+  ]
+}

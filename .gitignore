@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+dirsubmit.db
+cheatsheets/
+drafts/
+product.yaml
+.pytest_cache/
+.DS_Store
+awesome-saas-directories/
+*.docx

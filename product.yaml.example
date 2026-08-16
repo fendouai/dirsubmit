@@ -1,0 +1,20 @@
+# 产品信息（AI 文案与表单填充的唯一数据源）
+name: My SaaS          # 产品名
+url: https://example.com
+tagline: 一句话卖点
+description: |
+  2-4 句产品介绍，说明做什么、给谁用、解决什么问题。
+features:
+  - 功能点 1
+  - 功能点 2
+  - 功能点 3
+pricing: Freemium      # 定价模型
+categories:            # 候选分类，AI 会按目录挑选
+  - Productivity
+  - AI
+keywords:
+  - automation
+  - saas
+logo_url: https://example.com/logo.png
+email: you@example.com  # 部分目录需要
+twitter: yourhandle

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dirsubmit"
+version = "0.1.0"
+description = "Open-source CLI to auto/semi-auto submit your SaaS product to directories — AI copy, CDP session reuse, and review-status tracking."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "playwright>=1.40",
+    "pyyaml>=6.0",
+    "requests>=2.28",
+]
+
+[project.scripts]
+dirsubmit = "dirsubmit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,23 @@
+{
+  "name": "Altern",
+  "slug": "altern",
+  "submit_url": "https://altern.ai/submit",
+  "homepage": "https://altern.ai",
+  "dr": 45,
+  "tier": "semi",
+  "requires_auth": true,
+  "verify": { "type": "search", "url": "https://altern.ai/?search={name}" },
+  "submit_selector": "button[type='submit']",
+  "fields": [
+    { "name": "name", "type": "text", "required": true, "source": "name",
+      "selectors": ["input[name='name']", "#name"] },
+    { "name": "url", "type": "url", "required": true, "source": "url",
+      "selectors": ["input[name='url']", "input[name='website']", "#url"] },
+    { "name": "tagline", "type": "text", "required": true, "source": "ai.tagline",
+      "selectors": ["input[name='tagline']", "input[name='description']"] },
+    { "name": "description", "type": "textarea", "required": true, "source": "ai.description",
+      "selectors": ["textarea[name='description']", "textarea"] },
+    { "name": "category", "type": "select", "required": true, "source": "ai.category",
+      "selectors": ["select[name='category']"] }
+  ]
+}

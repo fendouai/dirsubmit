@@ -1,0 +1,23 @@
+{
+  "name": "SaaSHub",
+  "slug": "saashub",
+  "submit_url": "https://www.saashub.com/submit",
+  "homepage": "https://www.saashub.com",
+  "dr": 60,
+  "tier": "semi",
+  "requires_auth": true,
+  "verify": { "type": "search", "url": "https://www.saashub.com/search?q={name}" },
+  "submit_selector": "button[type='submit']",
+  "fields": [
+    { "name": "name", "type": "text", "required": true, "source": "name",
+      "selectors": ["input[name='name']", "#name"] },
+    { "name": "url", "type": "url", "required": true, "source": "url",
+      "selectors": ["input[name='url']", "input[name='website']"] },
+    { "name": "description", "type": "textarea", "required": true, "source": "ai.description",
+      "selectors": ["textarea[name='description']", "textarea"] },
+    { "name": "category", "type": "select", "required": true, "source": "ai.category",
+      "selectors": ["select[name='category']"] },
+    { "name": "pricing", "type": "select", "required": false, "source": "pricing",
+      "selectors": ["select[name='pricing']"] }
+  ]
+}

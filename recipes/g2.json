@@ -1,0 +1,17 @@
+{
+  "name": "G2",
+  "slug": "g2",
+  "submit_url": "https://www.g2.com/products/new",
+  "homepage": "https://www.g2.com",
+  "dr": 92,
+  "tier": "manual",
+  "requires_auth": true,
+  "verify": { "type": "search", "url": "https://www.g2.com/search?query={name}" },
+  "submit_selector": "",
+  "fields": [
+    { "name": "name", "type": "text", "required": true, "source": "name", "selectors": [] },
+    { "name": "url", "type": "url", "required": true, "source": "url", "selectors": [] },
+    { "name": "description", "type": "textarea", "required": true, "source": "ai.description", "selectors": [] },
+    { "name": "category", "type": "select", "required": true, "source": "ai.category", "selectors": [] }
+  ]
+}
