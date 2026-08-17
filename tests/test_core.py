@@ -154,3 +154,36 @@ def test_ext_bridge_no_client():
     finally:
         bridge.stop()
 
+
+def test_resolve_mode():
+    import dirsubmit.engine as eng
+    from dirsubmit.models import Recipe
+
+    # auto tier → headless
+    r = Recipe(slug="x", name="X", tier="auto")
+    assert eng.resolve_mode(r, None, "http://localhost:9222") == ("headless", "")
+
+    # manual tier → manual
+    r2 = Recipe(slug="y", name="Y", tier="manual")
+    assert eng.resolve_mode(r2, None, "http://localhost:9222") == ("manual", "")
+
+    # semi tier + 无扩展 + 无 CDP → 报错
+    r3 = Recipe(slug="z", name="Z", tier="semi")
+    monkey = pytest.MonkeyPatch()
+    monkey.setattr(eng, "cdp_available", lambda url: False)
+    mode, err = eng.resolve_mode(r3, None, "http://localhost:9222")
+    assert mode is None
+    assert "登录态" in err
+    monkey.undo()
+
+    # semi tier + 扩展已连接 → extension
+    class FakeBridge:
+        def connected(self):
+            return True
+    assert eng.resolve_mode(r3, FakeBridge(), "http://localhost:9222") == ("extension", "")
+
+    # semi tier + CDP 可用 → cdp
+    monkey.setattr(eng, "cdp_available", lambda url: True)
+    assert eng.resolve_mode(r3, None, "http://localhost:9222") == ("cdp", "")
+    monkey.undo()
+

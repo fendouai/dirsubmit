@@ -177,10 +177,35 @@ def _run_extension(recipe: Recipe, values: Dict[str, str], bridge):
     return submitted, missing
 
 
-def submit(recipe: Recipe, product: Product, copy: Copy, mode: str = "headless",
+def cdp_available(cdp_url: str) -> bool:
+    """检测 Chrome 调试端口是否可用。"""
+    try:
+        import requests
+        r = requests.get(cdp_url.rstrip("/") + "/json/version", timeout=2)
+        return r.ok
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def resolve_mode(recipe: Recipe, bridge, cdp_url: str):
+    """自动决定提交模式。返回 (mode, error_note)。mode ∈ headless|cdp|extension|None。"""
+    if recipe.tier == "auto":
+        return "headless", ""
+    if recipe.tier == "manual":
+        return "manual", ""
+    # semi：需要登录态。优先扩展 → CDP
+    if bridge is not None and bridge.connected():
+        return "extension", ""
+    if cdp_available(cdp_url):
+        return "cdp", ""
+    return None, ("semi 目录需登录态：请加载 Chrome 扩展（--mode extension）"
+                  "或带调试端口启动 Chrome 并登录（--mode cdp）")
+
+
+def submit(recipe: Recipe, product: Product, copy: Copy, mode: str = "auto",
            cdp_url: str = "http://localhost:9222", dry_run: bool = False,
            bridge=None):
-    """返回 (status, note)。mode ∈ headless|cdp|extension。"""
+    """返回 (status, note)。mode ∈ auto|headless|cdp|extension。"""
     values = build_values(recipe, product, copy)
 
     if recipe.tier == "manual":
@@ -188,6 +213,11 @@ def submit(recipe: Recipe, product: Product, copy: Copy, mode: str = "headless",
 
     if dry_run:
         return "dry-run", "仅演练，未实际提交"
+
+    if mode == "auto":
+        mode, err = resolve_mode(recipe, bridge, cdp_url)
+        if mode is None:
+            return "failed", err
 
     if mode == "extension":
         submitted, missing = _run_extension(recipe, values, bridge)

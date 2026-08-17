@@ -25,19 +25,26 @@ def _store(args):
 
 
 def _start_bridge(args):
-    """mode=extension 时启动 WebSocket 桥并等待 Chrome 扩展连入。"""
-    if getattr(args, "mode", None) != "extension":
+    """mode ∈ extension|auto 时启动 WebSocket 桥（后台），等待 Chrome 扩展连入。"""
+    mode = getattr(args, "mode", None)
+    if mode not in ("extension", "auto"):
         return None
     from .ext_bridge import ExtBridge
 
     port = int(getattr(args, "ext_port", None) or
                os.environ.get("DIRSUBMIT_EXT_PORT", "8721"))
     bridge = ExtBridge(port=port)
-    print(f"等待 Chrome 扩展连入 ws://127.0.0.1:{port} ...")
-    if bridge.start(wait=15.0):
-        print("  ✓ 扩展已连接")
-    else:
-        print("  ✗ 扩展未连接（请在 Chrome 加载 extension/ 目录，并点一下扩展图标唤醒）")
+    bridge.start(wait=0)  # 不阻塞
+    if mode == "extension":
+        print(f"等待 Chrome 扩展连入 ws://127.0.0.1:{port} ...")
+        if bridge.wait_for_client(timeout=15.0):
+            print("  ✓ 扩展已连接")
+        else:
+            print("  ✗ 扩展未连接（请在 Chrome 加载 extension/ 目录，并点一下扩展图标唤醒）")
+    else:  # auto：短暂检测窗口，检测到就用，检测不到走 CDP/headless
+        bridge.wait_for_client(timeout=3.0)
+        if bridge.connected():
+            print("  ✓ 检测到 Chrome 扩展，semi 目录将走扩展")
     return bridge
 
 
@@ -238,7 +245,8 @@ def build_parser():
     sp.set_defaults(func=cmd_gen)
 
     sp = sub.add_parser("submit", help="按 tier 提交到目录")
-    sp.add_argument("--mode", choices=["headless", "cdp", "extension"], default="headless")
+    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension"], default="auto",
+                    help="auto=自动选择（默认）")
     sp.add_argument("--tier", default="auto,semi,manual", help="只提交指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
     sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")
@@ -261,7 +269,8 @@ def build_parser():
 
     sp = sub.add_parser("distribute", help="统一分发到 API + 浏览器 + 手动渠道")
     sp.add_argument("--provider", help="openai|deepseek|gemini|ollama")
-    sp.add_argument("--mode", choices=["headless", "cdp", "extension"], default="headless")
+    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension"], default="auto",
+                    help="auto=自动选择（默认）")
     sp.add_argument("--tier", default="auto,semi,manual", help="只分发指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
     sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")

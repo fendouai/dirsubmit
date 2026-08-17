@@ -29,7 +29,7 @@
 | `semi` | CDP 或 Chrome 扩展（复用登录态） | 自动填表，偶发验证码需人工点一下 |
 | `manual` | 草稿/清单生成 | 生成适配文案，人肉发布 |
 
-`semi` 层可用 CDP（`--mode cdp`，需带调试端口启动 Chrome）或装一次自带的 [Chrome 扩展](extension/)（`--mode extension`，无需任何启动参数）。
+`semi` 层默认自动选模式（`--mode auto`）：装了 Chrome 扩展就走扩展，检测到调试端口就走 CDP，都没有则提示你配置。也可用 `--mode headless|cdp|extension` 强制指定。
 
 ## 快速开始
 

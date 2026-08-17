@@ -29,7 +29,7 @@ Built on a **three-tier automation model**: fully-automatic (API + headless brow
 | `semi` | CDP or Chrome extension (reuses login) | Auto-fills forms, occasional captcha needs a human click |
 | `manual` | Draft/cheatsheet generation | Produces adapted copy for human publishing |
 
-For the `semi` tier you can either launch Chrome with a debug port (`--mode cdp`) or install the bundled [Chrome extension](extension/) once (`--mode extension`) — no launch flags needed.
+For the `semi` tier, `dirsubmit` auto-picks the mode (default `--mode auto`): it uses the Chrome extension if installed, falls back to CDP if a debug port is up, and otherwise asks you to set one up. You can still force a specific mode with `--mode headless|cdp|extension`.
 
 ## Quick start
 
