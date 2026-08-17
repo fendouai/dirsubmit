@@ -17,7 +17,7 @@ Built on a **three-tier automation model**: fully-automatic (API + headless brow
 ## Highlights
 
 1. **AI-differentiated copy** — generates distinct tagline/description/category/tags per directory to avoid duplicate-content penalties.
-2. **CDP dual-mode engine** — headless for no-login forms; `connect_over_cdp` reuses your real Chrome login state so account-required directories become automatable.
+2. **CDP dual-mode engine** — headless for no-login forms; reuse your real Chrome login state via CDP or a **lightweight Chrome extension** (no launch flags) so account-required directories become automatable.
 3. **Credential detection** — every API channel declares its required credentials; unconfigured channels are auto-disabled and activate as soon as you fill them in.
 4. **Review-status tracking** — SQLite records every submission; `status --check` re-fetches directory pages to verify if your listing went live.
 
@@ -26,8 +26,10 @@ Built on a **three-tier automation model**: fully-automatic (API + headless brow
 | Tier | Method | Behavior |
 |------|--------|----------|
 | `auto` | Official API + headless browser | Fully unattended |
-| `semi` | CDP browser (reuses login) | Auto-fills forms, occasional captcha needs a human click |
+| `semi` | CDP or Chrome extension (reuses login) | Auto-fills forms, occasional captcha needs a human click |
 | `manual` | Draft/cheatsheet generation | Produces adapted copy for human publishing |
+
+For the `semi` tier you can either launch Chrome with a debug port (`--mode cdp`) or install the bundled [Chrome extension](extension/) once (`--mode extension`) — no launch flags needed.
 
 ## Quick start
 

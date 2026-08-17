@@ -138,9 +138,49 @@ def _run_playwright(recipe: Recipe, values: Dict[str, str], cdp_url: str | None)
         return submitted, missing
 
 
+def _run_extension(recipe: Recipe, values: Dict[str, str], bridge):
+    """通过 Chrome 扩展（本地 WebSocket）填表提交。返回 (submitted, missing)。"""
+    if bridge is None or not bridge.connected():
+        return False, ["扩展未连接（先加载 extension/ 并点一下扩展图标唤醒）"]
+
+    r = bridge.call("navigate", url=recipe.submit_url, timeout=30)
+    if r.get("status") != "ok":
+        return False, [f"导航失败：{r.get('error')}"]
+
+    if recipe.wait_ms:
+        bridge.call("wait", ms=recipe.wait_ms)
+
+    missing = []
+    for f in recipe.fields:
+        if f.submit:
+            continue
+        if f.type == "file":
+            print(f"    [warn] 扩展模式暂不支持文件上传（{f.name}），跳过")
+            continue
+        filled = False
+        for sel in (f.selectors or [f"[name='{f.name}']"]):
+            r = bridge.call("fill", selector=sel,
+                            value=values.get(f.name, ""), type=f.type)
+            if r.get("status") == "ok":
+                filled = True
+                break
+        if not filled:
+            missing.append(f.name)
+            print(f"    [warn] 未定位到字段 {f.name}（tried {f.selectors or []}）")
+
+    submitted = False
+    if recipe.submit_selector:
+        r = bridge.call("click", selector=recipe.submit_selector)
+        submitted = r.get("status") == "ok"
+
+    bridge.call("wait", ms=1500)
+    return submitted, missing
+
+
 def submit(recipe: Recipe, product: Product, copy: Copy, mode: str = "headless",
-           cdp_url: str = "http://localhost:9222", dry_run: bool = False):
-    """返回 (status, note)。"""
+           cdp_url: str = "http://localhost:9222", dry_run: bool = False,
+           bridge=None):
+    """返回 (status, note)。mode ∈ headless|cdp|extension。"""
     values = build_values(recipe, product, copy)
 
     if recipe.tier == "manual":
@@ -149,9 +189,16 @@ def submit(recipe: Recipe, product: Product, copy: Copy, mode: str = "headless",
     if dry_run:
         return "dry-run", "仅演练，未实际提交"
 
+    if mode == "extension":
+        submitted, missing = _run_extension(recipe, values, bridge)
+        note = "已提交" if submitted else "表单已填，未确认提交"
+        if missing:
+            note += f"；缺字段 {missing}"
+        return "submitted" if submitted else "failed", note
+
     if recipe.tier == "semi" and mode != "cdp":
         return ("failed",
-                "semi 目录需登录态，请用 --mode cdp（先以调试端口启动 Chrome 并登录该站）")
+                "semi 目录需登录态，请用 --mode cdp（先以调试端口启动 Chrome 并登录该站）或 --mode extension（Chrome 扩展）")
 
     cdp = cdp_url if (recipe.tier == "semi" or mode == "cdp") else None
     try:

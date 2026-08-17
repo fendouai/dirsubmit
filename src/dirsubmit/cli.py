@@ -24,6 +24,23 @@ def _store(args):
     return Store(args.db)
 
 
+def _start_bridge(args):
+    """mode=extension 时启动 WebSocket 桥并等待 Chrome 扩展连入。"""
+    if getattr(args, "mode", None) != "extension":
+        return None
+    from .ext_bridge import ExtBridge
+
+    port = int(getattr(args, "ext_port", None) or
+               os.environ.get("DIRSUBMIT_EXT_PORT", "8721"))
+    bridge = ExtBridge(port=port)
+    print(f"等待 Chrome 扩展连入 ws://127.0.0.1:{port} ...")
+    if bridge.start(wait=15.0):
+        print("  ✓ 扩展已连接")
+    else:
+        print("  ✗ 扩展未连接（请在 Chrome 加载 extension/ 目录，并点一下扩展图标唤醒）")
+    return bridge
+
+
 def cmd_init(args):
     p = Path(args.product)
     if p.exists() and not args.force:
@@ -62,6 +79,7 @@ def cmd_submit(args):
     all_recipes = _recipes(args)
     store = _store(args)
     cdp_url = args.cdp_url or os.environ.get("DIRSUBMIT_CDP_URL", "http://localhost:9222")
+    bridge = _start_bridge(args)
 
     targets = [r for r in all_recipes if r.tier in args.tier.split(",")]
     if args.only:
@@ -82,11 +100,14 @@ def cmd_submit(args):
             status, note = "manual", f"粘贴清单已生成：{path}"
         else:
             status, note = engine.submit(
-                r, product, copy, mode=args.mode, cdp_url=cdp_url, dry_run=args.dry_run
+                r, product, copy, mode=args.mode, cdp_url=cdp_url,
+                dry_run=args.dry_run, bridge=bridge
             )
         store.set_status(r.slug, r.tier, status, note)
         print(f"  [{status}] {r.slug}  {note}")
     store.close()
+    if bridge is not None:
+        bridge.stop()
     return 0
 
 
@@ -144,6 +165,7 @@ def cmd_distribute(args):
     provider = args.provider or os.environ.get("DIRSUBMIT_LLM", "openai")
     llm = LLMClient(provider)
     cdp_url = args.cdp_url or os.environ.get("DIRSUBMIT_CDP_URL", "http://localhost:9222")
+    bridge = _start_bridge(args)
 
     chans = channels.all_channels(all_recipes)
     targets = channels.filter_channels(chans, args.tier, args.only)
@@ -168,7 +190,8 @@ def cmd_distribute(args):
                 status, note = "manual", f"粘贴清单：{path}"
             else:
                 status, note = engine.submit(r, product, copy, mode=args.mode,
-                                             cdp_url=cdp_url, dry_run=args.dry_run)
+                                             cdp_url=cdp_url, dry_run=args.dry_run,
+                                             bridge=bridge)
         else:  # manual 渠道：生成草稿供人工发布
             msg = copywriter.generate_message(product, ch, llm)
             drafts.mkdir(exist_ok=True)
@@ -179,6 +202,8 @@ def cmd_distribute(args):
         stats[status] = stats.get(status, 0) + 1
         print(f"  [{status}] {slug:<16} {note}")
     store.close()
+    if bridge is not None:
+        bridge.stop()
     print(f"\n汇总：{', '.join(f'{k}={v}' for k, v in sorted(stats.items()))}")
     return 0
 
@@ -213,9 +238,10 @@ def build_parser():
     sp.set_defaults(func=cmd_gen)
 
     sp = sub.add_parser("submit", help="按 tier 提交到目录")
-    sp.add_argument("--mode", choices=["headless", "cdp"], default="headless")
+    sp.add_argument("--mode", choices=["headless", "cdp", "extension"], default="headless")
     sp.add_argument("--tier", default="auto,semi,manual", help="只提交指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
+    sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")
     sp.add_argument("--only", help="只处理指定 slug")
     sp.add_argument("--dry-run", action="store_true", help="只演练不提交")
     sp.add_argument("--force", action="store_true", help="重跑已提交的")
@@ -235,9 +261,10 @@ def build_parser():
 
     sp = sub.add_parser("distribute", help="统一分发到 API + 浏览器 + 手动渠道")
     sp.add_argument("--provider", help="openai|deepseek|gemini|ollama")
-    sp.add_argument("--mode", choices=["headless", "cdp"], default="headless")
+    sp.add_argument("--mode", choices=["headless", "cdp", "extension"], default="headless")
     sp.add_argument("--tier", default="auto,semi,manual", help="只分发指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
+    sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")
     sp.add_argument("--only", help="只分发指定 slug（逗号分隔）")
     sp.add_argument("--dry-run", action="store_true", help="只演练不实际发布")
     sp.add_argument("--drafts", default="drafts", help="纯人工渠道草稿目录")

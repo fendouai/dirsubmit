@@ -72,6 +72,23 @@ dirsubmit distribute --tier semi --mode cdp
 
 > `--cdp-url` 默认 `http://localhost:9222`，可用 `--cdp-url` 或 `DIRSUBMIT_CDP_URL` 覆盖。
 
+### Chrome 扩展（`semi` 层推荐，无需启动参数）
+
+CDP 的替代方案，无需任何 Chrome 启动参数：装一次自带的扩展，之后 `dirsubmit` 直接控制你的日常 Chrome。
+
+1. 打开 `chrome://extensions` → 开启「开发者模式」
+2. 点「加载已解压的扩展程序」→ 选择 `extension/` 目录
+3. 扩展会在后台连接 `ws://127.0.0.1:8721`
+
+然后：
+
+```bash
+dirsubmit submit --tier semi --mode extension
+dirsubmit distribute --tier semi --mode extension
+```
+
+> MV3 的 service worker 空闲后可能休眠。若 `dirsubmit` 提示「扩展未连接」，点一下扩展图标（或重新加载）唤醒即可。详见 [`extension/README.md`](../extension/README.md)。
+
 ## 配置 LLM（可选但推荐）
 
 没有 LLM key 时 `gen`/`distribute` 会退化为模板文案；配了 LLM 能产出更优质、更差异化的内容。任选一个后端：

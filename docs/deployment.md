@@ -72,6 +72,23 @@ dirsubmit distribute --tier semi --mode cdp
 
 > `--cdp-url` defaults to `http://localhost:9222`; override with `--cdp-url` or `DIRSUBMIT_CDP_URL`.
 
+### Chrome extension (recommended for `semi` — no launch flags)
+
+An alternative to CDP that needs no special Chrome launch flags: install the bundled extension once, then `dirsubmit` controls your everyday Chrome directly.
+
+1. Open `chrome://extensions` → enable **Developer mode**
+2. Click **Load unpacked** → select the `extension/` directory
+3. The extension connects to `ws://127.0.0.1:8721` in the background
+
+Then:
+
+```bash
+dirsubmit submit --tier semi --mode extension
+dirsubmit distribute --tier semi --mode extension
+```
+
+> MV3 service workers may sleep when idle. If `dirsubmit` reports "extension not connected", click the extension icon (or reload it) to wake it. See [`extension/README.md`](../extension/README.md) for details.
+
 ## Set up an LLM (optional but recommended)
 
 `gen` / `distribute` fall back to template copy without an LLM key, but an LLM produces far better, differentiated content. Pick any provider:

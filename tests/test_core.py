@@ -142,3 +142,15 @@ def test_api_unknown_type():
     status, note = a.publish("nonexistent", "t", "m")
     assert status == "skipped"  # 无凭证要求 → 通过配置检查，但无 handler → 未实现
 
+
+def test_ext_bridge_no_client():
+    from dirsubmit.ext_bridge import ExtBridge
+    bridge = ExtBridge(port=18721)
+    try:
+        bridge.start(wait=0.5)
+        resp = bridge.call("ping", timeout=1)
+        assert resp["status"] == "error"
+        assert "未连接" in resp["error"]
+    finally:
+        bridge.stop()
+
