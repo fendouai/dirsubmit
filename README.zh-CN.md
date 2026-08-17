@@ -1,11 +1,18 @@
 # dirsubmit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Test](https://github.com/fendouai/dirsubmit/actions/workflows/test.yml/badge.svg)](https://github.com/fendouai/dirsubmit/actions/workflows/test.yml)
+[![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev)
+
 开源 Python CLI，一站式自动化 SaaS 分发：
 
 - **目录提交** — 自动/半自动把你的产品提交到 SaaS/AI 目录站。
 - **内容分发** — 一份产品介绍，自动改写并分发到博客 / 社交 / 社区 / 目录 / Launch 平台。
 
 基于**三层自动化模型**：全自动（API + 无头浏览器）、半自动（CDP 复用登录态）、纯人工（草稿生成）。
+
+![dirsubmit demo](assets/screenshot.png)
 
 ## 亮点
 

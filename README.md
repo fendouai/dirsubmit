@@ -1,11 +1,18 @@
 # dirsubmit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Test](https://github.com/fendouai/dirsubmit/actions/workflows/test.yml/badge.svg)](https://github.com/fendouai/dirsubmit/actions/workflows/test.yml)
+[![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev)
+
 An open-source Python CLI that automates SaaS distribution end-to-end:
 
 - **Directory submission** — auto/semi-auto submit your product to SaaS/AI directories.
 - **Content distribution** — adapt one product description and publish it across blog / social / community / directory / launch channels.
 
 Built on a **three-tier automation model**: fully-automatic (API + headless browser), semi-automatic (CDP session reuse), and manual (draft generation).
+
+![dirsubmit demo](assets/screenshot.png)
 
 ## Highlights
 
