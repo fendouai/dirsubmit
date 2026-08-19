@@ -153,9 +153,12 @@ def _hashnode(title, message, extra):
     pub = _env("HASHNODE_PUBLICATION_ID")
     variables = {"input": {"title": title, "contentMarkdown": message,
                            "publicationId": pub or None}}
-    r = requests.post("https://gql.hashnode.com",
+    r = requests.post("https://gql.hashnode.com/",
                       headers={"Authorization": _env("HASHNODE_TOKEN")},
                       json={"query": query, "variables": variables}, timeout=30)
+    ctype = r.headers.get("content-type", "")
+    if "json" not in ctype:
+        return "failed", "Hashnode GraphQL API 已转付费（需 Pro 订阅），免费端点已停用"
     ok = r.ok and "errors" not in r.json()
     return ("published" if ok else "failed",
             "已发布" if ok else f"Hashnode {r.status_code}: {r.text[:120]}")

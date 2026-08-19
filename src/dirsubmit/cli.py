@@ -11,6 +11,9 @@ from . import api, channels, config, copywriter, engine, recipes, tracker
 from .llm import LLMClient
 from .store import Store
 
+# 模块加载时自动读取 .env（用户无需手动 export）
+config.load_dotenv()
+
 
 def _product(args):
     return config.load_product(args.product)
