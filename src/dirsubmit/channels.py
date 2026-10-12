@@ -21,6 +21,7 @@ def _ch(slug, name, category, tier, method, api_type=None):
 
 # API 原生渠道（官方 API，全自动；凭证未配置则 disabled）
 API_CHANNELS: List[dict] = [
+    _ch("curlship.com", "CurlShip free directory", "directory", "auto", "api", "curlship"),
     # 博客 / 长文
     _ch("devto", "DEV.to", "blog", "auto", "api", "devto"),
     _ch("wordpress", "WordPress", "blog", "auto", "api", "wordpress"),
@@ -64,7 +65,10 @@ def browser_channel(r: Recipe) -> dict:
 
 def all_channels(recipe_list: List[Recipe]) -> List[dict]:
     """合并三类渠道：API + 浏览器目录 + 纯人工。"""
-    return list(API_CHANNELS) + [browser_channel(r) for r in recipe_list] + list(MANUAL_CHANNELS)
+    directory_api_slugs = {ch["slug"] for ch in API_CHANNELS
+                           if ch["method"] == "api" and ch["category"] == "directory"}
+    return list(API_CHANNELS) + [browser_channel(r) for r in recipe_list
+                                 if r.slug not in directory_api_slugs] + list(MANUAL_CHANNELS)
 
 
 def filter_channels(channels: List[dict], tier: str = "auto,semi,manual",

@@ -86,7 +86,8 @@ def test_tracker_search_match():
     monkey = pytest.MonkeyPatch()
     class FakeResp:
         status_code = 200
-        text = "<html>... Acme Tool ...</html>"
+        text = '<html><a href="https://acme.example.com">Acme Tool</a></html>'
+        url = "https://x.com/?q=Acme%20Tool"
     monkey.setattr(t.requests, "get", lambda *a, **k: FakeResp())
     status, _ = t.check(r, _product())
     assert status == "approved"
@@ -101,6 +102,7 @@ def test_tracker_no_match():
     class FakeResp:
         status_code = 200
         text = "<html>nothing here</html>"
+        url = "https://x.com/?q=Acme%20Tool"
     monkey.setattr(t.requests, "get", lambda *a, **k: FakeResp())
     status, _ = t.check(r, _product())
     assert status == "pending"

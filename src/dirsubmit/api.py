@@ -29,6 +29,7 @@ def _env(name: str, default: str = "") -> str:
 
 # 每个 API 渠道的必需凭证（环境变量）
 REQUIREMENTS: Dict[str, list] = {
+    "curlship": [],  # official anonymous zero-cost directory API
     "telegram": ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID"],
     "discord": ["DISCORD_WEBHOOK_URL"],
     "slack": ["SLACK_WEBHOOK_URL"],
@@ -70,6 +71,14 @@ def publish(api_type: str, title: str, message: str, dry_run: bool = False,
         return handler(title, message, extra or {})
     except Exception as e:  # noqa: BLE001
         return "failed", f"{api_type} 发布异常：{e}"
+
+
+def submit_directory(api_type, product, store, evidence_dir="runs", dry_run=False):
+    """Directory intake adapter; no generated article/message or arbitrary endpoint."""
+    if api_type != "curlship":
+        return {"status": "skipped", "note": "Unsupported directory API", "live_url": "", "receipt": ""}
+    from .directory_api import submit_curlship
+    return submit_curlship(product, store, evidence_dir, dry_run)
 
 
 # ---------- 文本/消息渠道 ----------

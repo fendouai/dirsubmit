@@ -102,3 +102,7 @@ recipes/*.json    # directory recipes (add one JSON per directory)
 ## License
 
 MIT.
+
+## Browser Use / Computer Use
+
+支持 Browser Use 视觉与 DOM Agent、Computer Use 执行器/接管任务、只读入口发现、填表预览、提交证据、按产品隔离及防重复提交。详见 [浏览器自动化](docs/browser-automation.zh-CN.md)。

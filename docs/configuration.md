@@ -24,6 +24,7 @@ keywords:                # used for tags/hashtags
   - saas
 logo_url: https://example.com/logo.png
 email: you@example.com   # some directories require an email
+submitter_name: ""       # verified full name of the authorized person submitting
 twitter: yourhandle
 ```
 
@@ -35,6 +36,7 @@ twitter: yourhandle
 | `categories`, `keywords` | category/tag form fields + AI copy |
 | `logo_url` | image upload fields |
 | `email` | directory + channel submissions |
+| `submitter_name` | submitter identity fields; supply the actual authorized person, separately from the product name |
 
 ## 2. Environment variables (`.env`)
 
@@ -100,8 +102,10 @@ One JSON per directory. Adding a directory = adding a JSON file.
 | `requires_auth` | whether an account is needed |
 | `wait_ms` | wait after page load (for async/iframe forms) |
 | `submit_selector` | CSS selector for the submit button |
-| `verify` | how `status --check` verifies: `{"type":"search","url":"...{name}..."}` or `{"type":"url","url":"..."}` |
+| `verify` | public checks for `status --check`: `{"type":"search","url":"...{name}..."}` or `{"type":"url","url":"..."}`; `{"type":"manual"}` makes no request. Missing or unknown types cannot automatically approve a listing. |
 | `fields[]` | form fields to fill |
+
+The verification URL and its final redirected host must match `homepage` (a `www` difference is allowed). Account, login, submission receipt, and GitHub pages cannot prove publication merely by containing a product link. Verify GitHub merge and upstream inclusion separately; execution `tier` does not identify the destination kind. The product's own homepage is not directory listing evidence.
 
 ### Field spec
 
@@ -113,6 +117,12 @@ One JSON per directory. Adding a directory = adding a JSON file.
 | `source` | where the value comes from: product field (`name`, `url`, `email`, `pricing`, …) or AI field (`ai.tagline`, `ai.description`, `ai.category`, `ai.tags`) |
 | `selectors` | CSS selectors, tried in order (supports cross-iframe) |
 | `file_path` | for `type: file`: local file to upload |
+| `value_map` | exact source string → destination value; unknown inputs block instead of guessing |
+| `constraints` | optional `min_length`, `max_length`, `min_words`, `max_words`, `allowed` and full-match `pattern`; invalid values are not truncated |
+
+Recipes may also specify `pre_submit_checks` to read exact DOM values immediately before the final click, including hidden honeypots. Each check contains `selector` and exactly one of `value` or `field`; `field` refers to a resolved recipe field. Use `include_hidden: true` when the checked input is hidden. An unreadable, ambiguous or mismatched value blocks the click.
+
+For combined receipt requirements, use `success.all_of`, an array of conditions with `url_equals`, `url_contains`, `selector`, `text` or `texts`. Every condition must match; texts with a selector must appear together in one visible matching element. Legacy success rules retain their OR behavior. Guarded agent tasks require structured observations and task binding; see [browser automation](browser-automation.zh-CN.md). The current extension cannot enforce these guards and stops before acting.
 
 > **Note**: CSS selectors break when sites redesign. The recipe system is intentionally a "add a JSON, submit a PR" model so the community can keep selectors fresh.
 

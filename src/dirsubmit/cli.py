@@ -24,13 +24,13 @@ def _recipes(args):
 
 
 def _store(args):
-    return Store(args.db)
+    return Store(args.db, product_url=_product(args).url)
 
 
 def _start_bridge(args):
     """mode ∈ extension|auto 时启动 WebSocket 桥（后台），等待 Chrome 扩展连入。"""
     mode = getattr(args, "mode", None)
-    if mode not in ("extension", "auto"):
+    if getattr(args, "dry_run", False) or mode not in ("extension", "auto"):
         return None
     from .ext_bridge import ExtBridge
 
@@ -95,30 +95,36 @@ def cmd_submit(args):
     if args.only:
         targets = [r for r in targets if r.slug in args.only.split(",")]
 
-    print(f"提交 {len(targets)} 个目录（tier={args.tier}，mode={args.mode}，dry_run={args.dry_run}）...")
-    for r in targets:
-        copy = store.get_copy(r.slug)
-        if copy is None:
-            print(f"  [skip] {r.slug} 无文案，先跑 `dirsubmit gen`")
-            continue
-        if not args.force and store.get_status(r.slug) in ("submitted", "approved"):
-            print(f"  [skip] {r.slug} 已提交，用 --force 重跑")
-            continue
+    failed = False
+    try:
+        print(f"提交 {len(targets)} 个目录（tier={args.tier}，mode={args.mode}，dry_run={args.dry_run}）...")
+        for r in targets:
+            copy = store.get_copy(r.slug)
+            if copy is None:
+                print(f"  [skip] {r.slug} 无文案，先跑 `dirsubmit gen`")
+                continue
+            if not args.force and store.get_status(r.slug) in ("submitted", "approved", "unverified"):
+                print(f"  [skip] {r.slug} 已提交，用 --force 重跑")
+                continue
 
-        if r.tier == "manual":
-            path = engine.cheatsheet_file(r, product, copy)
-            status, note = "manual", f"粘贴清单已生成：{path}"
-        else:
-            status, note = engine.submit(
-                r, product, copy, mode=args.mode, cdp_url=cdp_url,
-                dry_run=args.dry_run, bridge=bridge
-            )
-        store.set_status(r.slug, r.tier, status, note)
-        print(f"  [{status}] {r.slug}  {note}")
-    store.close()
-    if bridge is not None:
-        bridge.stop()
-    return 0
+            if r.tier == "manual" and args.mode not in ("computer-use", "browser-use"):
+                path = engine.cheatsheet_file(r, product, copy)
+                status, note = "manual", f"粘贴清单已生成：{path}"
+            else:
+                status, note = engine.submit(
+                    r, product, copy, mode=args.mode, cdp_url=cdp_url,
+                    dry_run=args.dry_run, bridge=bridge, fill_only=args.fill_only,
+                    evidence_dir=args.evidence_dir, max_steps=args.max_steps, computer_command=args.computer_command
+                )
+            failed = failed or status in {"failed", "blocked", "needs_auth", "unverified"}
+            if not args.dry_run:
+                store.set_status(r.slug, r.tier, status, note)
+            print(f"  [{status}] {r.slug}  {note}")
+    finally:
+        store.close()
+        if bridge is not None:
+            bridge.stop()
+    return 1 if failed else 0
 
 
 def cmd_status(args):
@@ -129,9 +135,14 @@ def cmd_status(args):
     rows = store.all_submissions()
     by_dir = {r["directory"]: r for r in rows}
 
-    targets = all_recipes
+    directory_apis = [ch for ch in channels.API_CHANNELS
+                      if ch["method"] == "api" and ch["category"] == "directory"]
+    api_slugs = {ch["slug"] for ch in directory_apis}
+    targets = [r for r in all_recipes if r.slug not in api_slugs]
     if args.only:
-        targets = [r for r in all_recipes if r.slug in args.only.split(",")]
+        only = set(args.only.split(","))
+        targets = [r for r in targets if r.slug in only]
+        directory_apis = [ch for ch in directory_apis if ch["slug"] in only]
 
     print(f"{'目录':<22}{'tier':<8}{'状态':<10}说明")
     for r in targets:
@@ -140,11 +151,23 @@ def cmd_status(args):
             continue
         status = row["status"]
         note = row["note"] or ""
-        if args.check and status in ("submitted", "pending"):
+        if args.check and status in ("submitted", "pending", "unverified"):
             st, n = tracker.check(r, product)
-            store.update_checked(r.slug, st, n)
+            if st == "pending" and status in ("submitted", "unverified"):
+                st = status  # absence of a public listing does not authorize a second submission
+            store.update_checked(r.slug, st, note=n)
             status, note = st, n
         print(f"{r.slug:<22}{r.tier:<8}{status:<10}{note}")
+    for ch in directory_apis:
+        row = by_dir.get(ch["slug"])
+        if not row:
+            continue
+        details = [row["note"] or "", row["live_url"] or ""]
+        if args.check:
+            details.append("API目录仅显示已保存状态；通用食谱检查器未重新核验此API，本次未请求HTTP。")
+        note = " ".join(part for part in details if part)
+        tier = row["tier"] or ch["tier"]
+        print(f"{ch['slug']:<22}{tier:<8}{row['status']:<10} {note}")
     store.close()
     return 0
 
@@ -173,47 +196,68 @@ def cmd_distribute(args):
     all_recipes = _recipes(args)
     store = _store(args)
     provider = args.provider or os.environ.get("DIRSUBMIT_LLM", "openai")
-    llm = LLMClient(provider)
     cdp_url = args.cdp_url or os.environ.get("DIRSUBMIT_CDP_URL", "http://localhost:9222")
-    bridge = _start_bridge(args)
 
     chans = channels.all_channels(all_recipes)
     targets = channels.filter_channels(chans, args.tier, args.only)
+    fill_only = bool(getattr(args, "fill_only", False))
+    directory_only = bool(targets) and all(ch["method"] == "api" and ch["category"] == "directory" for ch in targets)
+    api_preview_only = fill_only and bool(targets) and all(ch["method"] == "api" for ch in targets)
+    llm = None if directory_only or api_preview_only else LLMClient(provider)
+    bridge = None if directory_only or api_preview_only else _start_bridge(args)
 
-    print(f"分发到 {len(targets)} 个渠道（tier={args.tier}，dry_run={args.dry_run}）...")
-    drafts = Path(args.drafts)
-    stats = {}
-    for ch in targets:
-        slug, method, tier = ch["slug"], ch["method"], ch["tier"]
-        if method == "api":
-            msg = copywriter.generate_message(product, ch, llm)
-            status, note = api.publish(ch["api"]["type"], msg["title"], msg["message"],
-                                       dry_run=args.dry_run)
-        elif method == "browser":
-            r = ch["recipe"]
-            copy = store.get_copy(slug)
-            if copy is None:
-                copy = copywriter.generate_copy(product, r, llm)
-                store.upsert_copy(copy)
-            if r.tier == "manual":
-                path = engine.cheatsheet_file(r, product, copy)
-                status, note = "manual", f"粘贴清单：{path}"
-            else:
-                status, note = engine.submit(r, product, copy, mode=args.mode,
-                                             cdp_url=cdp_url, dry_run=args.dry_run,
-                                             bridge=bridge)
-        else:  # manual 渠道：生成草稿供人工发布
-            msg = copywriter.generate_message(product, ch, llm)
-            drafts.mkdir(exist_ok=True)
-            p = drafts / f"{slug}.md"
-            p.write_text(f"# {msg['title']}\n\n{msg['message']}\n", encoding="utf-8")
-            status, note = "manual", f"草稿：{p}"
-        store.set_status(slug, tier, status, note)
-        stats[status] = stats.get(status, 0) + 1
-        print(f"  [{status}] {slug:<16} {note}")
-    store.close()
-    if bridge is not None:
-        bridge.stop()
+    try:
+        print(f"分发到 {len(targets)} 个渠道（tier={args.tier}，dry_run={args.dry_run}）...")
+        drafts = Path(args.drafts)
+        stats = {}
+        for ch in targets:
+            slug, method, tier = ch["slug"], ch["method"], ch["tier"]
+            directory_api = method == "api" and ch["category"] == "directory"
+            if method == "api" and fill_only:
+                if directory_api:
+                    outcome = api.submit_directory(ch["api"]["type"], product, store, args.evidence_dir, True)
+                    status = "preview" if outcome["status"] == "dry-run" else outcome["status"]
+                    note = "fill-only: " + outcome["note"]
+                else:
+                    status, note = "preview", "fill-only: API publishing skipped; no network or Store changes"
+            elif directory_api:
+                outcome = api.submit_directory(ch["api"]["type"], product, store, args.evidence_dir, args.dry_run)
+                status, note = outcome["status"], outcome["note"]
+            elif method == "api":
+                msg = copywriter.generate_message(product, ch, llm)
+                status, note = api.publish(ch["api"]["type"], msg["title"], msg["message"],
+                                           dry_run=args.dry_run)
+            elif method == "browser":
+                r = ch["recipe"]
+                copy = store.get_copy(slug)
+                if copy is None:
+                    copy = copywriter.generate_copy(product, r, llm)
+                    store.upsert_copy(copy)
+                if not args.force and store.get_status(slug) in ("submitted", "approved", "unverified"):
+                    print(f"  [skip] {slug} 已提交或结果不确定，用 --force 重跑")
+                    continue
+                if r.tier == "manual" and args.mode not in ("computer-use", "browser-use"):
+                    path = engine.cheatsheet_file(r, product, copy)
+                    status, note = "manual", f"粘贴清单：{path}"
+                else:
+                    status, note = engine.submit(r, product, copy, mode=args.mode,
+                                                 cdp_url=cdp_url, dry_run=args.dry_run,
+                                                 bridge=bridge, fill_only=args.fill_only,
+                                                 evidence_dir=args.evidence_dir, max_steps=args.max_steps, computer_command=args.computer_command)
+            else:  # manual 渠道：生成草稿供人工发布
+                msg = copywriter.generate_message(product, ch, llm)
+                drafts.mkdir(exist_ok=True)
+                p = drafts / f"{slug}.md"
+                p.write_text(f"# {msg['title']}\n\n{msg['message']}\n", encoding="utf-8")
+                status, note = "manual", f"草稿：{p}"
+            if not args.dry_run and not directory_api and not (method == "api" and fill_only):
+                store.set_status(slug, tier, status, note)
+            stats[status] = stats.get(status, 0) + 1
+            print(f"  [{status}] {slug:<16} {note}")
+    finally:
+        store.close()
+        if bridge is not None:
+            bridge.stop()
     print(f"\n汇总：{', '.join(f'{k}={v}' for k, v in sorted(stats.items()))}")
     return 0
 
@@ -228,6 +272,70 @@ def cmd_channels(args):
         print(f"{ch['slug']:<18}{ch['category']:<12}{ch['method']:<10}{ch['tier']:<8}{st}")
     enabled = sum(1 for c in chans if channels.channel_status(c) == "enabled")
     print(f"\n{enabled}/{len(chans)} 个渠道已启用（其余未配置凭证，配好即自动启用）")
+    return 0
+
+
+def cmd_batch(args):
+    failures = 0
+    for path in args.products:
+        options = vars(args).copy()
+        options["product"] = path
+        item = argparse.Namespace(**options)
+        print(f"\n产品：{path}")
+        try:
+            if cmd_gen(item):
+                failures += 1
+                continue
+            failures += bool(cmd_submit(item))
+        except Exception as exc:
+            failures += 1
+            print(f"[failed] {path}: {exc}")
+    return 1 if failures else 0
+
+
+def cmd_scout(args):
+    import json
+    from .scout import discover
+    result = discover(args.url, args.cdp_url)
+    path = Path(args.out)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"发现报告：{path}（只读取页面，没有提交）")
+    return 0
+
+
+def cmd_resume(args):
+    import json
+    from .automation import validate_result
+    task = json.loads(Path(args.task).read_text(encoding="utf-8"))
+    result = json.loads(Path(args.result).read_text(encoding="utf-8"))
+    if isinstance(result, dict) and (result.get("task_id") != task["id"] or result.get("product_url") != task["product_url"] or result.get("directory") != task["directory"]):
+        print("结果与任务/产品/目录不匹配，未导入")
+        return 1
+    status, note = validate_result(result, task.get("fill_only", False), task)
+    live_url = result.get("live_url", "") if isinstance(result, dict) else ""
+    if not isinstance(live_url, str):
+        live_url = ""
+    store = Store(args.db, product_url=task["product_url"])
+    try:
+        store.set_status(task["directory"], task["recipe"]["tier"], status, note, live_url)
+    finally:
+        store.close()
+    print(f"[{status}] {task['directory']} {note}")
+    return 0
+
+
+def cmd_report(args):
+    import json
+    store = _store(args)
+    try:
+        report = {"product_url": _product(args).url, "submissions": store.all_submissions()}
+    finally:
+        store.close()
+    path = Path(args.out)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"报告：{path}")
     return 0
 
 
@@ -248,8 +356,12 @@ def build_parser():
     sp.set_defaults(func=cmd_gen)
 
     sp = sub.add_parser("submit", help="按 tier 提交到目录")
-    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension"], default="auto",
+    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension", "browser-use", "computer-use"], default="auto",
                     help="auto=自动选择（默认）")
+    sp.add_argument("--computer-command", help="Computer Use 执行器命令；JSON stdin/stdout，无 shell")
+    sp.add_argument("--fill-only", action="store_true", help="填表但不点击最终提交")
+    sp.add_argument("--evidence-dir", default="runs", help="证据和接管任务目录")
+    sp.add_argument("--max-steps", type=int, default=60, help="Browser Use 最大步骤数")
     sp.add_argument("--tier", default="auto,semi,manual", help="只提交指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
     sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")
@@ -272,19 +384,51 @@ def build_parser():
 
     sp = sub.add_parser("distribute", help="统一分发到 API + 浏览器 + 手动渠道")
     sp.add_argument("--provider", help="openai|deepseek|gemini|ollama")
-    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension"], default="auto",
+    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension", "browser-use", "computer-use"], default="auto",
                     help="auto=自动选择（默认）")
+    sp.add_argument("--computer-command", help="Computer Use 执行器命令；JSON stdin/stdout，无 shell")
+    sp.add_argument("--fill-only", action="store_true", help="填表但不点击最终提交")
+    sp.add_argument("--evidence-dir", default="runs", help="证据和接管任务目录")
+    sp.add_argument("--max-steps", type=int, default=60, help="Browser Use 最大步骤数")
     sp.add_argument("--tier", default="auto,semi,manual", help="只分发指定 tier")
     sp.add_argument("--cdp-url", help="CDP 地址，默认 http://localhost:9222")
     sp.add_argument("--ext-port", help="扩展 WebSocket 端口，默认 8721")
     sp.add_argument("--only", help="只分发指定 slug（逗号分隔）")
     sp.add_argument("--dry-run", action="store_true", help="只演练不实际发布")
+    sp.add_argument("--force", action="store_true", help="重跑已提交或结果不确定的目录")
     sp.add_argument("--drafts", default="drafts", help="纯人工渠道草稿目录")
     sp.set_defaults(func=cmd_distribute)
 
     sp = sub.add_parser("channels", help="列出所有渠道及启用状态")
     sp.set_defaults(func=cmd_channels)
 
+    sp = sub.add_parser("batch", help="多个产品生成文案并逐一提交；结果按产品隔离")
+    sp.add_argument("products", nargs="+")
+    sp.add_argument("--provider")
+    sp.add_argument("--mode", choices=["auto", "headless", "cdp", "extension", "browser-use", "computer-use"], default="auto")
+    sp.add_argument("--only")
+    sp.add_argument("--tier", default="auto,semi,manual")
+    sp.add_argument("--cdp-url")
+    sp.add_argument("--ext-port")
+    sp.add_argument("--dry-run", action="store_true")
+    sp.add_argument("--fill-only", action="store_true")
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--evidence-dir", default="runs")
+    sp.add_argument("--max-steps", type=int, default=60)
+    sp.add_argument("--computer-command")
+    sp.set_defaults(func=cmd_batch)
+    sp = sub.add_parser("scout", help="只读发现入口、Google 登录按钮和表单字段")
+    sp.add_argument("url")
+    sp.add_argument("--cdp-url", help="复用已登录的 Chrome")
+    sp.add_argument("--out", default="runs/scout.json")
+    sp.set_defaults(func=cmd_scout)
+    sp = sub.add_parser("resume", help="导入 Computer Use 接管结果")
+    sp.add_argument("--task", required=True)
+    sp.add_argument("--result", required=True)
+    sp.set_defaults(func=cmd_resume)
+    sp = sub.add_parser("report", help="导出当前产品的提交报告")
+    sp.add_argument("--out", default="submission-report.json")
+    sp.set_defaults(func=cmd_report)
     return p
 
 

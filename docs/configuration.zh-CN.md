@@ -24,6 +24,7 @@ keywords:                # 用于标签 / hashtag
   - saas
 logo_url: https://example.com/logo.png
 email: you@example.com   # 部分目录需要邮箱
+submitter_name: ""       # 真实、获授权提交者的全名
 twitter: yourhandle
 ```
 
@@ -35,6 +36,7 @@ twitter: yourhandle
 | `categories`、`keywords` | 分类/标签字段 + AI 文案 |
 | `logo_url` | 图片上传字段 |
 | `email` | 目录 + 渠道提交 |
+| `submitter_name` | 提交者身份字段；填写真实获授权的人，与产品名称分开 |
 
 ## 2. 环境变量（`.env`）
 
@@ -100,8 +102,10 @@ twitter: yourhandle
 | `requires_auth` | 是否需账号 |
 | `wait_ms` | 页面加载后等待毫秒（用于异步/iframe 表单） |
 | `submit_selector` | 提交按钮的 CSS 选择器 |
-| `verify` | `status --check` 核验方式：`{"type":"search","url":"...{name}..."}` 或 `{"type":"url","url":"..."}` |
+| `verify` | `status --check` 公开核验：`{"type":"search","url":"...{name}..."}` 或 `{"type":"url","url":"..."}`；`{"type":"manual"}` 不请求页面。缺失或未知类型不自动批准。 |
 | `fields[]` | 要填的表单字段 |
+
+核验 URL 及重定向后的域名须与 `homepage` 一致（允许 `www` 差异）。账户、登录、提交回执与 GitHub 页面不能仅凭产品链接判为已收录；GitHub 合并及上游条目需单独核实，不能用执行 `tier` 判断目的地类型。产品自己的主页也不能作为目录收录证明。
 
 ### 字段 spec
 
@@ -113,6 +117,12 @@ twitter: yourhandle
 | `source` | 取值来源：产品字段（`name`/`url`/`email`/`pricing`…）或 AI 字段（`ai.tagline`/`ai.description`/`ai.category`/`ai.tags`） |
 | `selectors` | CSS 选择器，按顺序尝试（支持跨 iframe） |
 | `file_path` | `type: file` 时：要上传的本地文件路径 |
+| `value_map` | 来源字符串 → 目录实际值的精确映射；未知输入停止，不猜测 |
+| `constraints` | 可选 `min_length`、`max_length`、`min_words`、`max_words`、`allowed` 与完整匹配 `pattern`；不截断不合格内容 |
+
+食谱可配置 `pre_submit_checks`，在最后点击前读取实际 DOM 值，包括隐藏反垃圾字段。每项含 `selector`，以及 `value` 或 `field` 之一；`field` 指向已经解析的食谱字段。隐藏输入使用 `include_hidden: true`。读取失败、匹配多个元素或值不符，都会阻止点击。
+
+组合回执使用 `success.all_of` 条件数组，支持 `url_equals`、`url_contains`、`selector`、`text`、`texts`。全部条件必须同时成立；带选择器的文本须同时出现在同一个可见元素中。旧回执配置仍保持 OR 行为。带守卫的 Agent 任务还要求结构化观察和任务绑定，详见[浏览器自动化](browser-automation.zh-CN.md)。当前扩展无法执行这些守卫，会在操作前停止。
 
 > **注意**：站点改版会导致 CSS 选择器失效。食谱系统刻意设计成「加一个 JSON、提一个 PR」的模式，让社区持续维护选择器。
 

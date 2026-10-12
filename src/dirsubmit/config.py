@@ -30,6 +30,8 @@ def load_product(path: str | Path = "product.yaml") -> Product:
         logo_url=data.get("logo_url", ""),
         email=data.get("email", ""),
         twitter=data.get("twitter", ""),
+        submitter_name=data.get("submitter_name", ""),
+        submitter_email=data.get("submitter_email", ""),
     )
 
 
@@ -53,6 +55,8 @@ keywords:
   - saas
 logo_url: https://example.com/logo.png
 email: you@example.com  # 部分目录需要
+submitter_name: ""      # 获授权的真实提交者全名；需要时填写，勿使用示例假姓名
+submitter_email: ""     # 已核实且获授权的注册邮箱；与产品业务联系 email 分开
 twitter: yourhandle
 """
 

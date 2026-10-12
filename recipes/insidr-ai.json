@@ -1,0 +1,56 @@
+{
+  "slug": "insidr-ai",
+  "name": "Insidr.ai",
+  "homepage": "https://www.insidr.ai/",
+  "submit_url": "https://www.insidr.ai/submit-tools/",
+  "tier": "semi",
+  "requires_auth": false,
+  "wait_ms": 2000,
+  "steps": [],
+  "fields": [
+    {
+      "name": "message",
+      "type": "textarea",
+      "required": true,
+      "source": "description",
+      "selectors": [
+        "form.elementor-form[name='Submit tools']:has(input[name='form_id'][value='6ad8e4a']):has(input[name='post_id'][value='3417']) textarea[name='form_fields[message]']"
+      ]
+    },
+    {
+      "name": "link",
+      "type": "url",
+      "required": true,
+      "source": "url",
+      "selectors": [
+        "form.elementor-form[name='Submit tools']:has(input[name='form_id'][value='6ad8e4a']):has(input[name='post_id'][value='3417']) input[name='form_fields[name]']"
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "text",
+      "required": true,
+      "source": "categories[0]",
+      "selectors": [
+        "form.elementor-form[name='Submit tools']:has(input[name='form_id'][value='6ad8e4a']):has(input[name='post_id'][value='3417']) input[name='form_fields[email]'][type='text']"
+      ]
+    }
+  ],
+  "submit_selector": "form.elementor-form[name='Submit tools']:has(input[name='form_id'][value='6ad8e4a']):has(input[name='post_id'][value='3417']) button[type='submit']",
+  "success": {
+    "selector": "form.elementor-form[name='Submit tools']:has(input[name='form_id'][value='6ad8e4a']):has(input[name='post_id'][value='3417']) .elementor-message-success[role='alert']"
+  },
+  "verify": {
+    "type": "search",
+    "url": "https://www.insidr.ai/?s={name}",
+    "native_success_text": "Your submission was successful",
+    "evidence_scope": "WarmQuant was submitted and confirmed through native CUA on 2026-10-09. This reusable recipe has only offline validation; no live CLI, extension or CDP submission has been tested.",
+    "editorial_required_fields": "Message and Link are optional in the site's HTML but required by this recipe for a meaningful product request. Tag is required by the site; its internal email field is category text, not a contact email.",
+    "limitations": [
+      "Only submit appropriate AI tools with an accurate description and first product category. A receipt confirms intake, not editorial approval.",
+      "The current engine has no optional popup-dismiss step. Close blocking newsletter popups through human or computer use before continuing; no mandatory dismissal selector is included.",
+      "All fields, final submit and receipt are scoped to the exact product form. There is no global success-text fallback because other forms can display the same message.",
+      "Public WordPress search may omit custom tool records or private pending submissions; a missing result is not an exhaustive duplicate check."
+    ]
+  }
+}

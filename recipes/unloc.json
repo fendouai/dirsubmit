@@ -1,0 +1,229 @@
+{
+  "slug": "unloc",
+  "name": "Unloc",
+  "homepage": "https://unloc.tools/",
+  "submit_url": "https://unloc.tools/submit",
+  "tier": "auto",
+  "requires_auth": false,
+  "wait_ms": 1500,
+  "steps": [
+    {
+      "action": "click",
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input[type='radio'][name='intent'][value='listing']"
+    }
+  ],
+  "fields": [
+    {
+      "name": "toolName",
+      "type": "text",
+      "required": true,
+      "source": "name",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolName[name='toolName']"
+      ],
+      "constraints": {
+        "min_length": 2,
+        "max_length": 80
+      }
+    },
+    {
+      "name": "toolUrl",
+      "type": "url",
+      "required": true,
+      "source": "url",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolUrl[name='toolUrl']"
+      ],
+      "constraints": {
+        "pattern": "https://\\S+"
+      }
+    },
+    {
+      "name": "toolTagline",
+      "type": "text",
+      "required": true,
+      "source": "tagline",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolTagline[name='toolTagline']"
+      ],
+      "constraints": {
+        "min_length": 20,
+        "max_length": 160,
+        "pattern": "[^\\r\\n]+"
+      }
+    },
+    {
+      "name": "categorySlug",
+      "type": "select",
+      "required": true,
+      "source": "categories[0]",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) select#categorySlug[name='categorySlug']"
+      ],
+      "value_map": {
+        "Writing": "writing-content",
+        "writing-content": "writing-content",
+        "Research": "social-creators",
+        "social-creators": "social-creators"
+      },
+      "constraints": {
+        "allowed": [
+          "writing-content",
+          "social-creators"
+        ]
+      }
+    },
+    {
+      "name": "pricing",
+      "type": "select",
+      "required": true,
+      "source": "pricing",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) select#pricing[name='pricing']"
+      ],
+      "value_map": {
+        "Freemium": "freemium",
+        "freemium": "freemium",
+        "Free": "free",
+        "free": "free"
+      },
+      "constraints": {
+        "allowed": [
+          "free",
+          "freemium"
+        ]
+      }
+    },
+    {
+      "name": "submittedBy",
+      "type": "text",
+      "required": true,
+      "source": "submitter_name",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#submittedBy[name='submittedBy']"
+      ],
+      "constraints": {
+        "min_words": 2
+      }
+    },
+    {
+      "name": "submittedEmail",
+      "type": "email",
+      "required": true,
+      "source": "email",
+      "selectors": [
+        "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#submittedEmail[name='submittedEmail']"
+      ],
+      "constraints": {
+        "pattern": "[^\\s@]+@[^\\s@]+\\.[^\\s@]+"
+      }
+    }
+  ],
+  "submit_selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) button[type='submit']",
+  "success": {
+    "all_of": [
+      {
+        "url_equals": "https://unloc.tools/submit/thanks"
+      },
+      {
+        "selector": "main",
+        "texts": [
+          "Received.",
+          "The listing is pending review."
+        ]
+      }
+    ]
+  },
+  "verify": {
+    "type": "manual",
+    "workflow": "Scoped form preparation with exact value maps, input validation, final DOM guards and AND receipt confirmation; native Computer Use handoff remains available.",
+    "input_contract": {
+      "name": "Actual product name, 2–80 characters.",
+      "url": "Canonical full https:// product URL.",
+      "tagline": "A factual, directory-adapted single line of 20–160 characters. Validate the complete supplied line; do not truncate, fabricate, or use generated copy without review.",
+      "categories[0]": "Known product category Writing or Research, explicitly mapped to the current directory slug; exact prepared slugs also accepted. Unknown values block; no label or AI fallback.",
+      "pricing": "Verified product pricing Free or Freemium, explicitly mapped to free/freemium. Unknown values block; pricing describes the product, not the submission plan.",
+      "email": "Authorized contact email for this product; prefer the official public business contact.",
+      "submitter_name": "The separate Product.submitter_name fact, at least two words; do not substitute product name, keywords, AI copy or an invented founder identity."
+    },
+    "verified_product_mappings": {
+      "https://warmquant.com/": {
+        "categorySlug": "writing-content",
+        "category_label": "Writing & Content",
+        "pricing": "freemium",
+        "pricing_label": "Free options"
+      },
+      "https://weworkbuddy.com/": {
+        "categorySlug": "social-creators",
+        "category_label": "Social & Creators",
+        "pricing": "free",
+        "pricing_label": "Free"
+      }
+    },
+    "handoff_checks": [
+      "Check the task's existing submissions before opening this flow. WarmQuant and WeWorkBuddy were already submitted on 2026-10-09; this recipe does not authorize duplicate intake.",
+      "Confirm exactly one intended form exists and select Free listing, intent=listing. Never interact with pin, claim, sponsorship amounts, checkout, or paid subscriptions.",
+      "Validate all input constraints and the exact current category/pricing values before filling. A missing or invalid value blocks submission, even if the site has a default pricing selection.",
+      "Verify the separately supplied submitter_name contains at least two words and describes the actual authorized submitter, not an assumed founder. Verify the intended contact email.",
+      "Leave Company website, name=unlocHp, untouched and empty. Inspect its current value before final submission; if autofill has populated it, stop and diagnose rather than blindly clearing or submitting.",
+      "Recheck intent=listing, blank honeypot, all visible values, and button text Submit for review immediately before one final click. Any selector drift, payment lane, CAPTCHA or tool-required agreement confirmation requires handoff.",
+      "Observe the actual submission processing, including Sending…, and its resulting navigation to /submit/thanks with Received. and The listing is pending review. Inspect any fieldErrors/error instead of claiming success.",
+      "A directly visited generic thanks page, a pre-existing Received message, a click, or field clearing alone is insufficient. Without a confirmed response keep unverified and do not automatically retry. Intake is distinct from approved publication."
+    ],
+    "native_receipt": {
+      "url": "https://unloc.tools/submit/thanks",
+      "heading": "Received.",
+      "text": "The listing is pending review.",
+      "evidence": "runs/unloc-confirmations.json",
+      "scope": "Both product applications were confirmed through native CUA; database persistence and public listing were not independently captured."
+    },
+    "limitations": [
+      "Native WarmQuant and WeWorkBuddy submissions were confirmed before this recipe existed. The recipe, guards and engine changes have only controlled offline regression tests; no live CLI/CDP/extension/Browser Use submission has been performed.",
+      "Auto/headless and CDP can read and enforce these DOM guards. The current extension lacks guard/AND inspection and is blocked before any actions; use a supported executor rather than dropping constraints.",
+      "Browser Use and Computer Use must return task-bound structured before/after visible observations and actual final guard reads. A free-text success claim is rejected. If hidden values cannot be read, stop for handoff.",
+      "The server receipt is a generic publicly reachable page. Acceptance is inferred only after starting on the submission page, passing guards and one final click; a pre-existing receipt blocks the click. The server response body/database row/public approval are not independently verified by this recipe.",
+      "BotsTest has no verified fitting Unloc category and its unmapped Robotics/AI Directories inputs are blocked. Do not force it into QA/Testing or Coding Agents."
+    ],
+    "automated_confirmation_scope": "Exact thanks URL AND both receipt texts within one visible main element, absent before the final click. The official public receipt DOM was independently read without submission.",
+    "receipt_markup_source": "https://unloc.tools/submit/thanks"
+  },
+  "pre_submit_checks": [
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input[type='radio'][name='intent']:checked",
+      "value": "listing"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input[name='unlocHp']",
+      "value": "",
+      "include_hidden": true
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolName[name='toolName']",
+      "field": "toolName"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolUrl[name='toolUrl']",
+      "field": "toolUrl"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#toolTagline[name='toolTagline']",
+      "field": "toolTagline"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) select#categorySlug[name='categorySlug']",
+      "field": "categorySlug"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) select#pricing[name='pricing']",
+      "field": "pricing"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#submittedBy[name='submittedBy']",
+      "field": "submittedBy"
+    },
+    {
+      "selector": "form.relative.space-y-6[autocomplete='off'][novalidate]:has(select[name='categorySlug']):has(input[name='unlocHp']) input#submittedEmail[name='submittedEmail']",
+      "field": "submittedEmail"
+    }
+  ]
+}

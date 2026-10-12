@@ -29,5 +29,11 @@ jobs:
           pip install -e .
           pip install pytest
 
+      - name: Install browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Verify Chrome bridge
+        run: node tests/test_extension.cjs
+
       - name: Run tests
         run: pytest -q

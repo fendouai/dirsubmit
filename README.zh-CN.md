@@ -102,3 +102,17 @@ recipes/*.json    # 目录食谱（每加一个目录 = 加一个 JSON）
 ## 许可
 
 MIT。
+
+## Browser Use / Computer Use
+
+支持 Browser Use 视觉与 DOM Agent、Computer Use 执行器/接管任务、只读入口发现、填表预览、提交证据、按产品隔离及防重复提交。详见 [浏览器自动化](docs/browser-automation.zh-CN.md)。
+
+## 免费目录 API
+
+CurlShip 支持仅发送产品 HTTPS 首页与显式 `submitter_email` 的匿名免费提交；这项邮箱配置与产品业务联系 `email` 分开。先运行只读演练：
+
+```bash
+dirsubmit --product product.yaml distribute --only curlship.com --dry-run
+```
+
+仅选择该目录 API 时不启动 LLM 或 Chrome。真实执行有产品隔离、防重复及单次 POST 保护；A 表示接收，S 另需公开验证。已记录的三个产品不会复投。配置、查重范围与状态说明见 [CurlShip 免费目录 API](docs/browser-automation.zh-CN.md#curlship-免费目录-api)。
