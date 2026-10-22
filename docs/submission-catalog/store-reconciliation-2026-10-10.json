@@ -1,0 +1,2435 @@
+{
+  "checked_at_utc": "2026-10-12T06:13:29.899855+00:00",
+  "generated_catalog_at_utc": "2026-10-12T06:13:18.579764+00:00",
+  "Store_access": "sqlite uri mode=ro; query_only; no Store initialization/mutation",
+  "confirmed_Store_records": 191,
+  "confirmed_catalog_product_target_pairs": 191,
+  "identity_and_S_A_grade_sets_equal": true,
+  "confirmed_categories": {
+    "directories": 103,
+    "awesome-repositories": 55,
+    "editorial-outlets": 33
+  },
+  "confirmed_per_product": {
+    "botstest": 60,
+    "warmquant": 76,
+    "weworkbuddy": 55
+  },
+  "unique_confirmed_PRs": 43,
+  "last_verified_open_unmerged_PRs": 42,
+  "merged_public_PRs": 1,
+  "PR_state_scope": "Dated baseline43 PR states retained plus individually confirmed new round23 PRs at their local receipt timestamps. No fresh unified all-PR census.",
+  "total_pair_grades": {
+    "S": 10,
+    "U": 2072,
+    "A": 181,
+    "C": 2647,
+    "D": 1084
+  },
+  "immutable_source_hashes": {
+    "runs/category1-directory-universe-2026-10-10.json": "4edad410efa6d6e62d94350e72ea1831cb875428853276cb9e392f0535495a53",
+    "runs/category2-awesome-universe-2026-10-10.json": "994487877d335cc0b99f3288629e8cf01fb273e8d6a0d23b02162b2a27732cdc",
+    "runs/category3-editorial-universe-2026-10-10.json": "2e309ec45de7e0fea39bab7888e9ba9c77170d5cf9bfbe41cb7ce530c13004a7"
+  },
+  "additive_source": {
+    "path": "docs/submission-catalog/additional-targets.json",
+    "sha256": "074bf9ff8b6baff8af7c6ff2913b7da7f4be172c499fc395ddaa3db9fa71b471",
+    "targets_per_category": {
+      "directories": 0,
+      "awesome-repositories": 10,
+      "editorial-outlets": 17
+    }
+  },
+  "embedded_data_matches_outputs": true,
+  "mailbox_body_or_preview_copied": false,
+  "mapping": [
+    {
+      "category": "directories",
+      "target_key": "resource.fyi",
+      "product": "botstest",
+      "store_directory": "resourcefyi",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "resource.fyi",
+      "product": "warmquant",
+      "store_directory": "resourcefyi",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "resource.fyi",
+      "product": "weworkbuddy",
+      "store_directory": "resourcefyi",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "10xaiagents.com",
+      "product": "warmquant",
+      "store_directory": "10xaiagents",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "aimarketing.directory",
+      "product": "warmquant",
+      "store_directory": "aimarketing-directory",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "aimarketing.directory",
+      "product": "weworkbuddy",
+      "store_directory": "aimarketing-directory",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "aitoolsup.com",
+      "product": "warmquant",
+      "store_directory": "aitoolsup",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "appstackbuilder.com",
+      "product": "botstest",
+      "store_directory": "appstackbuilder",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "appstackbuilder.com",
+      "product": "warmquant",
+      "store_directory": "appstackbuilder",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "appstackbuilder.com",
+      "product": "weworkbuddy",
+      "store_directory": "appstackbuilder",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "businesstoolvault.com",
+      "product": "warmquant",
+      "store_directory": "business-tool-vault",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "businesstoolvault.com",
+      "product": "weworkbuddy",
+      "store_directory": "business-tool-vault",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "backdata.net",
+      "product": "botstest",
+      "store_directory": "backdata.net",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "backdata.net",
+      "product": "warmquant",
+      "store_directory": "backdata.net",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "backdata.net",
+      "product": "weworkbuddy",
+      "store_directory": "backdata.net",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "devhunt.org",
+      "product": "botstest",
+      "store_directory": "devhunt",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "dynamite-ai.com",
+      "product": "botstest",
+      "store_directory": "dynamite-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "dynamite-ai.com",
+      "product": "warmquant",
+      "store_directory": "dynamite-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "dynamite-ai.com",
+      "product": "weworkbuddy",
+      "store_directory": "dynamite-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "forwardfuture.com",
+      "product": "botstest",
+      "store_directory": "forwardfuture",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "forwardfuture.com",
+      "product": "warmquant",
+      "store_directory": "forwardfuture",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "huntstartup.com",
+      "product": "botstest",
+      "store_directory": "huntstartup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "huntstartup.com",
+      "product": "warmquant",
+      "store_directory": "huntstartup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "huntstartup.com",
+      "product": "weworkbuddy",
+      "store_directory": "huntstartup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "indielineup.com",
+      "product": "botstest",
+      "store_directory": "indielineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "indielineup.com",
+      "product": "warmquant",
+      "store_directory": "indielineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "indielineup.com",
+      "product": "weworkbuddy",
+      "store_directory": "indielineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "insidr.ai",
+      "product": "botstest",
+      "store_directory": "insidr-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "insidr.ai",
+      "product": "warmquant",
+      "store_directory": "insidr-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "insidr.ai",
+      "product": "weworkbuddy",
+      "store_directory": "insidr-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "tools.launchllama.co",
+      "product": "warmquant",
+      "store_directory": "launchllama",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "launchpedia.co",
+      "product": "botstest",
+      "store_directory": "launchpedia",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "launchpedia.co",
+      "product": "warmquant",
+      "store_directory": "launchpedia",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "launchpedia.co",
+      "product": "weworkbuddy",
+      "store_directory": "launchpedia",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "listai.cc",
+      "product": "warmquant",
+      "store_directory": "listai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "myfreeaisource.com",
+      "product": "warmquant",
+      "store_directory": "myfreeaisource",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "nextgentools.me",
+      "product": "botstest",
+      "store_directory": "nextgentools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "nextgentools.me",
+      "product": "warmquant",
+      "store_directory": "nextgentools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "nextgentools.me",
+      "product": "weworkbuddy",
+      "store_directory": "nextgentools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "nologin.tools",
+      "product": "botstest",
+      "store_directory": "nologintools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "phyco.org",
+      "product": "botstest",
+      "store_directory": "phyco",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "phyco.org",
+      "product": "warmquant",
+      "store_directory": "phyco",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "phyco.org",
+      "product": "weworkbuddy",
+      "store_directory": "phyco",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "public.tools",
+      "product": "botstest",
+      "store_directory": "publictools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "robotcafe.com",
+      "product": "botstest",
+      "store_directory": "robotcafe",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saassurf.com",
+      "product": "botstest",
+      "store_directory": "saassurf.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saassurf.com",
+      "product": "warmquant",
+      "store_directory": "saassurf.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saassurf.com",
+      "product": "weworkbuddy",
+      "store_directory": "saassurf.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saashub.com",
+      "product": "warmquant",
+      "store_directory": "saashub",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saashub.com",
+      "product": "weworkbuddy",
+      "store_directory": "saashub",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saaslineup.com",
+      "product": "botstest",
+      "store_directory": "saaslineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saaslineup.com",
+      "product": "warmquant",
+      "store_directory": "saaslineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "saaslineup.com",
+      "product": "weworkbuddy",
+      "store_directory": "saaslineup.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startupcollections.com",
+      "product": "botstest",
+      "store_directory": "startupcollections",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startupcollections.com",
+      "product": "warmquant",
+      "store_directory": "startupcollections",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startupcollections.com",
+      "product": "weworkbuddy",
+      "store_directory": "startupcollections",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startup88.com",
+      "product": "botstest",
+      "store_directory": "startup88",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startup88.com",
+      "product": "warmquant",
+      "store_directory": "startup88",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "startup88.com",
+      "product": "weworkbuddy",
+      "store_directory": "startup88",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "superaitools.io",
+      "product": "botstest",
+      "store_directory": "superaitools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "superaitools.io",
+      "product": "weworkbuddy",
+      "store_directory": "superaitools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "themicrosaasdir.com",
+      "product": "botstest",
+      "store_directory": "themicrosaasdir.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "themicrosaasdir.com",
+      "product": "warmquant",
+      "store_directory": "themicrosaasdir.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "themicrosaasdir.com",
+      "product": "weworkbuddy",
+      "store_directory": "themicrosaasdir.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "toolbase.io",
+      "product": "botstest",
+      "store_directory": "toolbase",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "toolbase.io",
+      "product": "warmquant",
+      "store_directory": "toolbase",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "toolbase.io",
+      "product": "weworkbuddy",
+      "store_directory": "toolbase",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "unloc.tools",
+      "product": "warmquant",
+      "store_directory": "unloc",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "unloc.tools",
+      "product": "weworkbuddy",
+      "store_directory": "unloc",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "whatlaunched.today",
+      "product": "botstest",
+      "store_directory": "whatlaunched",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "whatlaunched.today",
+      "product": "warmquant",
+      "store_directory": "whatlaunched",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "whatlaunched.today",
+      "product": "weworkbuddy",
+      "store_directory": "whatlaunched",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "sajadh76/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-sajadh-ai-tools",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "0voice/awesome-ai-tools",
+      "product": "botstest",
+      "store_directory": "github-0voice-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "0voice/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-0voice-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "alternbits/awesome-ai-marketing",
+      "product": "warmquant",
+      "store_directory": "github-awesome-ai-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "alternbits/awesome-ai-marketing",
+      "product": "weworkbuddy",
+      "store_directory": "github-alternbits-awesome-ai-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "atakanaltok/awesome-useful-websites",
+      "product": "botstest",
+      "store_directory": "github-atakanaltok-awesome-useful-websites",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "best-of-ai/ai-directories",
+      "product": "botstest",
+      "store_directory": "github-best-of-ai-ai-directories",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "bst04/aisources",
+      "product": "warmquant",
+      "store_directory": "github-bst04-aisources",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "bst04/aisources",
+      "product": "weworkbuddy",
+      "store_directory": "github-bst04-AISources",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "bttrfndr/awesome-creator-tools",
+      "product": "weworkbuddy",
+      "store_directory": "github-awesome-creator-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "cporter202/ai-agent-tools",
+      "product": "warmquant",
+      "store_directory": "github-cporter202-ai-agent-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "fb13/awesome-ai-writing-tools",
+      "product": "warmquant",
+      "store_directory": "github-fb13-awesome-ai-writing-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "hilmanski/freestuffdev",
+      "product": "botstest",
+      "store_directory": "github-hilmanski-freestuffdev",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "hilmanski/freestuffdev",
+      "product": "warmquant",
+      "store_directory": "github-hilmanski-freeStuffDev",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "hilmanski/freestuffdev",
+      "product": "weworkbuddy",
+      "store_directory": "github-hilmanski-freeStuffDev",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "isaacbell/awesome-technical-marketing",
+      "product": "warmquant",
+      "store_directory": "github-awesome-technical-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "isaacbell/awesome-technical-marketing",
+      "product": "weworkbuddy",
+      "store_directory": "github-awesome-technical-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "kahkashanshaik/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-kahkashanshaik",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "kiloreux/awesome-robotics",
+      "product": "botstest",
+      "store_directory": "github-awesome-robotics",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "lyirs/aidataset",
+      "product": "botstest",
+      "store_directory": "github-lyirs-AIDataset",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mahseema/awesome-ai-tools",
+      "product": "botstest",
+      "store_directory": "github-mahseema-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mahseema/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "marketingtoolslist/awesome-marketing",
+      "product": "warmquant",
+      "store_directory": "github-marketingtoolslist-awesome-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "marketingtoolslist/awesome-marketing",
+      "product": "weworkbuddy",
+      "store_directory": "github-awesome-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "marketinguys/awesome-content-marketing",
+      "product": "warmquant",
+      "store_directory": "github-awesome-content-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mathiasmantelli/awesome-mobile-robotics",
+      "product": "botstest",
+      "store_directory": "github-awesome-mobile-robotics",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mengyanggao/awesome-robotics-embodied-ai",
+      "product": "botstest",
+      "store_directory": "github-mengyanggao-awesome-robotics-embodied-ai",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "msadowski/awesome-weekly-robotics",
+      "product": "botstest",
+      "store_directory": "github-weekly-robotics",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "nightwatch-seo/awesome-seo-tools",
+      "product": "warmquant",
+      "store_directory": "github-awesome-seo-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "nightwatch-seo/awesome-seo-tools",
+      "product": "weworkbuddy",
+      "store_directory": "github-awesome-seo-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "ninjasort/awesome-marketing",
+      "product": "warmquant",
+      "store_directory": "github-ninjasort-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "ninjasort/awesome-marketing",
+      "product": "weworkbuddy",
+      "store_directory": "github-ninjasort-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "paulbradish/awesome-digital-marketing",
+      "product": "warmquant",
+      "store_directory": "github-awesome-digital-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "paulbradish/awesome-digital-marketing",
+      "product": "weworkbuddy",
+      "store_directory": "github-awesome-digital-marketing",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "slyyr/awesome-robotics",
+      "product": "botstest",
+      "store_directory": "github-slyyr-awesome-robotics",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "techiediaries/awesome-technical-writing-blogging-resources",
+      "product": "warmquant",
+      "store_directory": "github-techiediaries-awesome-technical-writing-blogging-resources",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "tomrzv/ai-directories",
+      "product": "botstest",
+      "store_directory": "github-tomrzv-AI-Directories",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "toolkitlyai/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-toolkitly-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "yourpalzack/awesome-ai-seo-tools",
+      "product": "warmquant",
+      "store_directory": "github-yourpalzack-awesome-ai-seo-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "betanews.com",
+      "product": "botstest",
+      "store_directory": "editorial-betanews.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "betanews.com",
+      "product": "warmquant",
+      "store_directory": "editorial-betanews.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "betanews.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-betanews.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupbeat.com",
+      "product": "botstest",
+      "store_directory": "editorial-startupbeat.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupbeat.com",
+      "product": "warmquant",
+      "store_directory": "editorial-startupbeat.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupbeat.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-startupbeat.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupvalley.news",
+      "product": "botstest",
+      "store_directory": "editorial-startupvalley.news",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupvalley.news",
+      "product": "warmquant",
+      "store_directory": "editorial-startupvalley.news",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "startupvalley.news",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-startupvalley.news",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techinasia.com",
+      "product": "botstest",
+      "store_directory": "editorial-techinasia.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techinasia.com",
+      "product": "warmquant",
+      "store_directory": "editorial-techinasia.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techinasia.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-techinasia.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techpluto.com",
+      "product": "botstest",
+      "store_directory": "editorial-techpluto.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techpluto.com",
+      "product": "warmquant",
+      "store_directory": "editorial-techpluto.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techpluto.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-techpluto.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techcrunch-editorial-pitch",
+      "product": "botstest",
+      "store_directory": "editorial-techcrunch-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techcrunch-editorial-pitch",
+      "product": "warmquant",
+      "store_directory": "editorial-techcrunch-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "techcrunch-editorial-pitch",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-techcrunch-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "theverge.com",
+      "product": "botstest",
+      "store_directory": "editorial-theverge.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "theverge.com",
+      "product": "warmquant",
+      "store_directory": "editorial-theverge.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "theverge.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-theverge.com",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "venturebeat-editorial-pitch",
+      "product": "botstest",
+      "store_directory": "editorial-venturebeat-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "venturebeat-editorial-pitch",
+      "product": "warmquant",
+      "store_directory": "editorial-venturebeat-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "venturebeat-editorial-pitch",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-venturebeat-editorial-pitch",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ljinkai/weekly",
+      "product": "botstest",
+      "store_directory": "editorial-ljinkai-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ljinkai/weekly",
+      "product": "warmquant",
+      "store_directory": "editorial-ljinkai-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ljinkai/weekly",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-ljinkai-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ruanyf/weekly",
+      "product": "botstest",
+      "store_directory": "editorial-ruanyf-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ruanyf/weekly",
+      "product": "warmquant",
+      "store_directory": "editorial-ruanyf-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "github:ruanyf/weekly",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-ruanyf-weekly",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "aisotools.com",
+      "product": "botstest",
+      "store_directory": "aisotools.com",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "aisotools.com",
+      "product": "warmquant",
+      "store_directory": "aisotools.com",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "aisotools.com",
+      "product": "weworkbuddy",
+      "store_directory": "aisotools.com",
+      "grade": "S",
+      "store_status": "approved"
+    },
+    {
+      "category": "directories",
+      "target_key": "freeble.in",
+      "product": "botstest",
+      "store_directory": "freeble.in",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "freeble.in",
+      "product": "weworkbuddy",
+      "store_directory": "freeble.in",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "ahundt/awesome-robotics",
+      "product": "botstest",
+      "store_directory": "github-ahundt-awesome-robotics",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "nanogiants/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-nanogiants-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "vovaekb/awesome-ros2",
+      "product": "botstest",
+      "store_directory": "github-vovaekb-Awesome-ROS2",
+      "grade": "A",
+      "store_status": "submitted"
+    },
+    {
+      "category": "directories",
+      "target_key": "ababtools.com",
+      "product": "botstest",
+      "store_directory": "ababtools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "「Botstest」当前状态：待审核（提交于 2026-10-12 10:52）",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T02:54:20.341Z",
+          "source_record": "runs/round22-ababtools-botstest-native-accepted-2026-10-12.json",
+          "source_sha256": "3fede397d5d98c01fe000a763e54da4d4e22f649bdca65519f1d32b71a4e0e04"
+        }
+      ]
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "siliconangle.com",
+      "product": "botstest",
+      "store_directory": "editorial-siliconangle.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T01:51:29.759Z",
+          "receipt_scope": "Editorial source-tip email delivered only; no editor acknowledgement, acceptance or publication inferred.",
+          "source_record": "runs/round22-siliconangle-botstest-native-sent-2026-10-12.json",
+          "source_sha256": "5f91b978fcf06a3a6d943e7f7c8619c34d2c80eddfe65ec50067b734284b39d8"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "aitoollist/awesome-ai-tool-list",
+      "product": "botstest",
+      "store_directory": "github-aitoollist-awesome-ai-tool-list",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/aitoollist/awesome-ai-tool-list/pull/213",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "cc77735f7e8683ec0e07fa2eccce4c63bcd72f43",
+          "recorded_at_utc": "2026-10-12T02:26:53.115410+00:00",
+          "source_record": "runs/round22-awesome-aitoollist-PR213-public-confirmation-2026-10-12.json",
+          "source_sha256": "e36168f8b129e81d74fbfa828b56b320d042660d4450d8192d6f8f0e410334f3"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "dr-mushtaq/awesome-ai-tools-resources",
+      "product": "botstest",
+      "store_directory": "github-dr-mushtaq-Awesome-AI-Tools-Resources",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/dr-mushtaq/Awesome-AI-Tools-Resources/pull/57",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "87358e5640c4ecb451b8d5e5804c919378321716",
+          "recorded_at_utc": "2026-10-12T02:01:20.138366+00:00",
+          "source_record": "runs/round22-awesome-dr-mushtaq-PR57-public-confirmation-2026-10-12.json",
+          "source_sha256": "e07b97c3f2ebe632a1c52683e22d95c7b576f8c084e08c1fbf9212d940d96740"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "natnew/awesome-physical-ai",
+      "product": "botstest",
+      "store_directory": "github-natnew-awesome-physical-ai",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/natnew/awesome-physical-ai/pull/42",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 23,
+          "head_SHA": "c0266290490afa0cd8af0603c7be856fe21adaae",
+          "recorded_at_utc": "2026-10-12T02:11:55.128056+00:00",
+          "source_record": "runs/round22-awesome-natnew-PR42-public-confirmation-2026-10-12.json",
+          "source_sha256": "17dd3ac6a912ba95f2b93e06f38651da79073f4a894978a4b6e89e4a5b69e707"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "tinyzqh/awesome-robot-operating-syetem",
+      "product": "botstest",
+      "store_directory": "github-tinyzqh-awesome-Robot-Operating-Syetem",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/tinyzqh/awesome-Robot-Operating-Syetem/pull/1",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 23,
+          "head_SHA": "53415eae640c5e74b57e0ae65d6a94becbd90d07",
+          "recorded_at_utc": "2026-10-12T02:06:10.803780+00:00",
+          "source_record": "runs/round22-awesome-tinyzqh-PR1-public-confirmation-2026-10-12.json",
+          "source_sha256": "f0173fd33cc27b8f0a7b0422321a3ae52d87c9a2ebae28b3ffcb2dcd53fc3072"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "mrfreetools.com",
+      "product": "botstest",
+      "store_directory": "mrfreetools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you, the message was sent successfully.",
+          "formal_application_intake": false,
+          "recorded_at_utc": "2026-10-12T01:35:36.311981+00:00",
+          "source_record": "runs/round22-mrfreetools-botstest-native-sent-confirmation-2026-10-12.json",
+          "source_sha256": "1f2fe7fb4575de6e73ee8f88f9cb1fba38c6991c7139924c5b467d4388d52663"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "textlinkdirectory.com",
+      "product": "botstest",
+      "store_directory": "textlinkdirectory.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you for your submission. We will review your submission shortly.",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T01:45:32.812Z",
+          "source_record": "runs/round22-textlink-botstest-native-accepted-2026-10-12.json",
+          "source_sha256": "b6e3d7a1091423271261b319a7da9dbe487ed25db186c34fab73e92d35fdc69d"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "ababtools.com",
+      "product": "warmquant",
+      "store_directory": "ababtools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "「WarmQuant」当前状态：待审核（提交于 2026-10-12 10:54）",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T02:55:10.262Z",
+          "source_record": "runs/round22-ababtools-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "d20df7c55f9c32ca43466095a36e82c4f74e38391b24fe85788780ca955e58dc"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "addaidirectory.com",
+      "product": "warmquant",
+      "store_directory": "addaidirectory.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T02:39:13.386Z",
+          "receipt_scope": "Directory listing-request email delivered only; no directory reply, dedicated intake, approval or public listing inferred.",
+          "source_record": "runs/round22-addaidirectory-warmquant-native-sent-2026-10-12.json",
+          "source_sha256": "d845e0e2a82aa0ab6021e53e7348f9274a0bb23a86cc38c7af40f6ec6939e552"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "ai-toolflow.com",
+      "product": "warmquant",
+      "store_directory": "ai-toolflow.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T02:34:34.741Z",
+          "receipt_scope": "Directory listing-request email delivered only; no directory reply, dedicated intake, approval or public listing inferred.",
+          "source_record": "runs/round22-toolflow-warmquant-native-sent-2026-10-12.json",
+          "source_sha256": "36896ca613bf847f2cb7a5aea98537129015a9cd9d21296c529bf4c804303c19"
+        }
+      ]
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "siliconangle.com",
+      "product": "warmquant",
+      "store_directory": "editorial-siliconangle.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T01:53:24.856Z",
+          "receipt_scope": "Editorial source-tip email delivered only; no editor acknowledgement, acceptance or publication inferred.",
+          "source_record": "runs/round22-siliconangle-warmquant-native-sent-2026-10-12.json",
+          "source_sha256": "066e11e8e0fb681617d486d662d0c0c0c35f11968dd9c79f1f9b19dbab9fbf04"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "freeble.in",
+      "product": "warmquant",
+      "store_directory": "freeble.in",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T03:08:17.835Z",
+          "receipt_scope": "Directory listing-request email delivered only; no directory reply, dedicated intake, approval or public listing inferred.",
+          "source_record": "runs/round22-freeble-warmquant-native-sent-2026-10-12.json",
+          "source_sha256": "33c787f713ee75852bc73c1441ee92ad3af900aad7e39f8ede2d40921c5e554e"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "alexkuchkov/awesome-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-AlexKuchkov-awesome-ai-tools",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/AlexKuchkov/awesome-ai-tools/pull/44",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 23,
+          "head_SHA": "5c5ebdf996394224c062e09e48a75418754d6bdb",
+          "recorded_at_utc": "2026-10-12T01:45:24.388473+00:00",
+          "source_record": "runs/round22-awesome-alex-PR44-public-confirmation-2026-10-12.json",
+          "source_sha256": "bda75fb0d3abe0cd210485c05faa86b81676ee373c215caa059c6733e0b59192"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "sunil-pradhan/awesome-software-list",
+      "product": "warmquant",
+      "store_directory": "github-Sunil-Pradhan-awesome-software-list",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/Sunil-Pradhan/awesome-software-list/pull/6",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 24,
+          "head_SHA": "746458dda7e2e939cc867fe1fc95bbecf3643dc4",
+          "recorded_at_utc": "2026-10-12T02:16:37.187280+00:00",
+          "source_record": "runs/round22-awesome-sunil-PR6-public-confirmation-2026-10-12.json",
+          "source_sha256": "97c1c0c271db78c9422892071a830031e0518730c6b7cde23bd1be4da4b8f577"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "aitoollist/awesome-ai-tool-list",
+      "product": "warmquant",
+      "store_directory": "github-aitoollist-awesome-ai-tool-list",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/aitoollist/awesome-ai-tool-list/pull/213",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "cc77735f7e8683ec0e07fa2eccce4c63bcd72f43",
+          "recorded_at_utc": "2026-10-12T02:26:53.115410+00:00",
+          "source_record": "runs/round22-awesome-aitoollist-PR213-public-confirmation-2026-10-12.json",
+          "source_sha256": "e36168f8b129e81d74fbfa828b56b320d042660d4450d8192d6f8f0e410334f3"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "dr-mushtaq/awesome-ai-tools-resources",
+      "product": "warmquant",
+      "store_directory": "github-dr-mushtaq-Awesome-AI-Tools-Resources",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/dr-mushtaq/Awesome-AI-Tools-Resources/pull/57",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "87358e5640c4ecb451b8d5e5804c919378321716",
+          "recorded_at_utc": "2026-10-12T02:01:20.138366+00:00",
+          "source_record": "runs/round22-awesome-dr-mushtaq-PR57-public-confirmation-2026-10-12.json",
+          "source_sha256": "e07b97c3f2ebe632a1c52683e22d95c7b576f8c084e08c1fbf9212d940d96740"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mdruhulkuddus/awesome-free-ai-tools",
+      "product": "warmquant",
+      "store_directory": "github-mdruhulkuddus-awesome-free-ai-tools",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/mdruhulkuddus/awesome-free-ai-tools/pull/54",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "a3a893377c2c68e7e45e95754687b62ebe2f0a6d",
+          "recorded_at_utc": "2026-10-12T02:21:36.415688+00:00",
+          "source_record": "runs/round22-awesome-mdruhulk-PR54-public-confirmation-2026-10-12.json",
+          "source_sha256": "c171e92583693ba386a69bc5feebbfaade6d6fd7dac57067048f46bcd32333d9"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "mrfreetools.com",
+      "product": "warmquant",
+      "store_directory": "mrfreetools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you, the message was sent successfully.",
+          "formal_application_intake": false,
+          "recorded_at_utc": "2026-10-12T01:37:16.010475+00:00",
+          "source_record": "runs/round22-mrfreetools-warmquant-native-sent-confirmation-2026-10-12.json",
+          "source_sha256": "33dd6d7a8cf033e0de185bd1563e1a5c090fffa2ae92b0c31a42e941d76c8e3b"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "textlinkdirectory.com",
+      "product": "warmquant",
+      "store_directory": "textlinkdirectory.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you for your submission. We will review your submission shortly.",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T01:47:00.246Z",
+          "source_record": "runs/round22-textlink-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "9084b85f29e509cf61e34f45404ac4010c36c09cec3a27fdf12b697af422357a"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "ababtools.com",
+      "product": "weworkbuddy",
+      "store_directory": "ababtools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "「WeWorkBuddy」当前状态：待审核（提交于 2026-10-12 10:58）",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T02:58:55.755Z",
+          "source_record": "runs/round22-ababtools-weworkbuddy-native-accepted-2026-10-12.json",
+          "source_sha256": "5107bd63dbe613e2db061ecf8bdcbe3d1559a4eabf131c7f330a09e9d78aed84"
+        }
+      ]
+    },
+    {
+      "category": "editorial-outlets",
+      "target_key": "siliconangle.com",
+      "product": "weworkbuddy",
+      "store_directory": "editorial-siliconangle.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_unique_Sent",
+          "matching_Sent_rows": 1,
+          "send_notice_observed": true,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "recorded_at_utc": "2026-10-12T01:54:42.141Z",
+          "receipt_scope": "Editorial source-tip email delivered only; no editor acknowledgement, acceptance or publication inferred.",
+          "source_record": "runs/round22-siliconangle-weworkbuddy-native-sent-2026-10-12.json",
+          "source_sha256": "dc67e7f5d60d5bcc431977345f0daedd94bd3cd998c1081ca71bddf84c50fcc5"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "sunil-pradhan/awesome-software-list",
+      "product": "weworkbuddy",
+      "store_directory": "github-Sunil-Pradhan-awesome-software-list",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/Sunil-Pradhan/awesome-software-list/pull/6",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 24,
+          "head_SHA": "746458dda7e2e939cc867fe1fc95bbecf3643dc4",
+          "recorded_at_utc": "2026-10-12T02:16:37.187280+00:00",
+          "source_record": "runs/round22-awesome-sunil-PR6-public-confirmation-2026-10-12.json",
+          "source_sha256": "97c1c0c271db78c9422892071a830031e0518730c6b7cde23bd1be4da4b8f577"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "aitoollist/awesome-ai-tool-list",
+      "product": "weworkbuddy",
+      "store_directory": "github-aitoollist-awesome-ai-tool-list",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/aitoollist/awesome-ai-tool-list/pull/213",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "cc77735f7e8683ec0e07fa2eccce4c63bcd72f43",
+          "recorded_at_utc": "2026-10-12T02:26:53.115410+00:00",
+          "source_record": "runs/round22-awesome-aitoollist-PR213-public-confirmation-2026-10-12.json",
+          "source_sha256": "e36168f8b129e81d74fbfa828b56b320d042660d4450d8192d6f8f0e410334f3"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "dr-mushtaq/awesome-ai-tools-resources",
+      "product": "weworkbuddy",
+      "store_directory": "github-dr-mushtaq-Awesome-AI-Tools-Resources",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/dr-mushtaq/Awesome-AI-Tools-Resources/pull/57",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "87358e5640c4ecb451b8d5e5804c919378321716",
+          "recorded_at_utc": "2026-10-12T02:01:20.138366+00:00",
+          "source_record": "runs/round22-awesome-dr-mushtaq-PR57-public-confirmation-2026-10-12.json",
+          "source_sha256": "e07b97c3f2ebe632a1c52683e22d95c7b576f8c084e08c1fbf9212d940d96740"
+        }
+      ]
+    },
+    {
+      "category": "awesome-repositories",
+      "target_key": "mdruhulkuddus/awesome-free-ai-tools",
+      "product": "weworkbuddy",
+      "store_directory": "github-mdruhulkuddus-awesome-free-ai-tools",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "exact_public_PR_receipt",
+          "PR_URL": "https://github.com/mdruhulkuddus/awesome-free-ai-tools/pull/54",
+          "state": "open",
+          "merged": false,
+          "author": "fendouai",
+          "check_count": 25,
+          "head_SHA": "a3a893377c2c68e7e45e95754687b62ebe2f0a6d",
+          "recorded_at_utc": "2026-10-12T02:21:36.415688+00:00",
+          "source_record": "runs/round22-awesome-mdruhulk-PR54-public-confirmation-2026-10-12.json",
+          "source_sha256": "c171e92583693ba386a69bc5feebbfaade6d6fd7dac57067048f46bcd32333d9"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "mrfreetools.com",
+      "product": "weworkbuddy",
+      "store_directory": "mrfreetools.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you, the message was sent successfully.",
+          "formal_application_intake": false,
+          "recorded_at_utc": "2026-10-12T01:37:16.014108+00:00",
+          "source_record": "runs/round22-mrfreetools-weworkbuddy-native-sent-confirmation-2026-10-12.json",
+          "source_sha256": "1eb663eca25a253dbbd74cc4ffc4b01594da4386d184b34b51e1bd250bcbb541"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "textlinkdirectory.com",
+      "product": "weworkbuddy",
+      "store_directory": "textlinkdirectory.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you for your submission. We will review your submission shortly.",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T01:47:53.023Z",
+          "source_record": "runs/round22-textlink-weworkbuddy-native-accepted-2026-10-12.json",
+          "source_sha256": "b9693de24be780c527faaa548af437d55116caf389caf0acfd5bef2e75c865e0"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "curlship.com",
+      "product": "botstest",
+      "store_directory": "curlship.com",
+      "grade": "S",
+      "store_status": "approved",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "documented_public_API_exact_201_and_anonymous_GET_listing",
+          "canonical_url": "https://curlship.com/api/listing/4473",
+          "listing_id": 4473,
+          "public_product_URL": "https://botstest.com/",
+          "check_count": 10,
+          "recorded_at_utc": "2026-10-12T03:40:49.823296+00:00",
+          "receipt_scope": "Documented free API201 creation and separate anonymous public GET matched numeric ID, exact product URL and free tier; no browser login, manual review or asset upload inferred.",
+          "source_record": "runs/round23-curlship-botstest-official-API-receipt-2026-10-12.json",
+          "source_sha256": "6644b8f6b36b3a0075656f15d4232830dde54c3954de8c2748830e704c3a416f"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "nextbigproduct.com",
+      "product": "botstest",
+      "store_directory": "nextbigproduct.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_NextBigProduct_exact_accepted_listing_ID",
+          "listing_id": 5900,
+          "submission_reference_url": "https://nextbigproduct.com/list-product?pid=5900",
+          "canonical_product_url": "https://nextbigproduct.com/product/botstest",
+          "receipt_text": [
+            "SUBMISSION COMPLETE",
+            "Your product is ready to launch",
+            "Listing submitted",
+            "Keep the free plan and verify your domain",
+            "Free launch without verification"
+          ],
+          "server_accepted_submit_actions": 1,
+          "normal_submit_actions_total": 3,
+          "server_rejected_CSRF_actions": 1,
+          "server_rejected_empty_rich_description_actions": 1,
+          "recorded_at_utc": "2026-10-12T04:42:21.504Z",
+          "receipt_scope": "One accepted free native listing intake. Rejected attempts, launch-schedule verification and a landing-soon public placeholder are separate; public listing not inferred.",
+          "source_record": "runs/round23-nextbigproduct-botstest-native-accepted-2026-10-12.json",
+          "source_sha256": "8667931d09d240b23263b9539051d754247bc8cc48b005034f5e03f35b5be403"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "wechalet.cn",
+      "product": "botstest",
+      "store_directory": "wechalet.cn",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "申请成功",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T05:36:40.359Z",
+          "receipt_scope": "Zero-charge directory-consideration request received; public listing price, acceptance and publication are not verified.",
+          "source_record": "runs/round23-wechalet-botstest-native-accepted-2026-10-12.json",
+          "source_sha256": "0260c07fe3ce0601e6b9ec5b8b465ca98da75213d6e4cde7614d2c315ca7f59e"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "aitoolscapital.com",
+      "product": "warmquant",
+      "store_directory": "aitoolscapital.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thanks, fei wang! We received your submission for WarmQuant. Confirmation sent to your inbox. We typically review within 24 hours.",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T03:54:43.886Z",
+          "receipt_scope": "Native directory intake receipt only; approval and public listing are not inferred.",
+          "source_record": "runs/round23-aitoolscapital-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "1558d2bb4204b57854acf2b554979aa03ead1d45b6db71325f75c2d8723bd6c8"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "aitoolsmarketer.com",
+      "product": "warmquant",
+      "store_directory": "aitoolsmarketer.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Your request has been received and will be read by a person within two working days.",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T04:12:28.977Z",
+          "receipt_scope": "Zero-charge directory-consideration request received; public listing price, acceptance and publication are not verified.",
+          "source_record": "runs/round23-aitoolsmarketer-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "d69761fbc0fc12438ade89c304051b5bdb4257f629c7b6b4a0325d820c5a4bd7"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "curlship.com",
+      "product": "warmquant",
+      "store_directory": "curlship.com",
+      "grade": "S",
+      "store_status": "approved",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "documented_public_API_exact_201_and_anonymous_GET_listing",
+          "canonical_url": "https://curlship.com/api/listing/4471",
+          "listing_id": 4471,
+          "public_product_URL": "https://warmquant.com/",
+          "check_count": 10,
+          "recorded_at_utc": "2026-10-12T03:39:30.296982+00:00",
+          "receipt_scope": "Documented free API201 creation and separate anonymous public GET matched numeric ID, exact product URL and free tier; no browser login, manual review or asset upload inferred.",
+          "source_record": "runs/round23-curlship-warmquant-official-API-receipt-2026-10-12.json",
+          "source_sha256": "ce81d3d9a276e95bece1048d9acd9bcc2bb7bf65caea5891403fc004bc84a56f"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "humanornot.co",
+      "product": "warmquant",
+      "store_directory": "humanornot.co",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "Thank you! Your submission has been received! You will be notified via email once the tool has been published",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T05:08:39.287Z",
+          "receipt_scope": "Native directory intake receipt only; approval and public listing are not inferred.",
+          "source_record": "runs/round23-humanornot-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "73efcce5092c35564793ff66b3c6ac58c767e8af3a22100a0032c4977d328996"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "nextbigproduct.com",
+      "product": "warmquant",
+      "store_directory": "nextbigproduct.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_NextBigProduct_existing_draft_completed_and_scheduled",
+          "listing_id": 5899,
+          "launch_date": "2026-10-20",
+          "submission_reference_url": "https://nextbigproduct.com/clientarea.php?action=productdetails&id=5899",
+          "canonical_product_url": "https://nextbigproduct.com/product/warmquant",
+          "receipt_text": [
+            "Product details updated successfully.",
+            "Launch scheduled for October 20, 2026.",
+            "SCHEDULED LAUNCH Your product is scheduled to go live on October 20, 2026",
+            "Paid Plans Free"
+          ],
+          "recorded_at_utc": "2026-10-12T04:55:32.670Z",
+          "creation_scope": "Previously created incomplete AI-generated draft. This run completed its real existing record, not a second new creation.",
+          "new_record_creation_claimed": false,
+          "normal_new_product_Submit_actions": 1,
+          "server_rejected_duplicate_Submit_actions": 1,
+          "server_accepted_new_product_Submit_actions": 0,
+          "normal_SaveAllChanges_actions": 1,
+          "server_accepted_SaveAllChanges_actions": 1,
+          "normal_SaveDate_actions": 2,
+          "server_rejected_incomplete_SaveDate_actions": 1,
+          "server_accepted_application_completion_actions": 1,
+          "receipt_scope": "An existing incomplete draft was corrected, saved and accepted for one free scheduled launch. The duplicate new-product rejection and incomplete date-save rejection are not accepted submissions; no new record creation or public S listing is claimed.",
+          "source_record": "runs/round23-nextbigproduct-warmquant-existing-draft-completed-and-scheduled-2026-10-12.json",
+          "source_sha256": "71ac6886b151f3fece363953f926582be46ccafca92827e1355199be8ffaed63"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "saascss.com",
+      "product": "warmquant",
+      "store_directory": "saascss.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_exact_unique_Sent_without_ephemeral_notice",
+          "matching_Sent_rows": 1,
+          "normal_send_actions": 1,
+          "send_notice_observed": false,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "product_domain_in_exact_Sent_query": true,
+          "exact_native_search_address_verified": true,
+          "task_subject_row_verified": true,
+          "Sent_not_Draft_scope_verified": true,
+          "prior_task_dedup0_verified": true,
+          "task_Gmail_account_matched": true,
+          "recorded_at_utc": "2026-10-12T05:22:48.121Z",
+          "receipt_scope": "One exact native Gmail in:sent recipient/subject/product-domain result confirms provider sending only. Ephemeral toast was not observed. A saved Draft cannot satisfy this exact in:sent proof; no directory acknowledgement, dedicated form intake, approval, free publication promise or public S listing is inferred.",
+          "source_record": "runs/round23-saascss-warmquant-native-unique-Sent-2026-10-12.json",
+          "source_sha256": "9936a4595e9eeb9ed5fd1285c16215e07dc95e5e1327d9d0cbbe2c91f8bf52fa"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "wechalet.cn",
+      "product": "warmquant",
+      "store_directory": "wechalet.cn",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "申请成功",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T05:38:01.463Z",
+          "receipt_scope": "Zero-charge directory-consideration request received; public listing price, acceptance and publication are not verified.",
+          "source_record": "runs/round23-wechalet-warmquant-native-accepted-2026-10-12.json",
+          "source_sha256": "32a0d895af6c31cdbc38693461d076211c71187bc86f50875d4db5ce4175cee6"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "curlship.com",
+      "product": "weworkbuddy",
+      "store_directory": "curlship.com",
+      "grade": "S",
+      "store_status": "approved",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "documented_public_API_exact_201_and_anonymous_GET_listing",
+          "canonical_url": "https://curlship.com/api/listing/4472",
+          "listing_id": 4472,
+          "public_product_URL": "https://weworkbuddy.com/",
+          "check_count": 10,
+          "recorded_at_utc": "2026-10-12T03:40:19.135980+00:00",
+          "receipt_scope": "Documented free API201 creation and separate anonymous public GET matched numeric ID, exact product URL and free tier; no browser login, manual review or asset upload inferred.",
+          "source_record": "runs/round23-curlship-weworkbuddy-official-API-receipt-2026-10-12.json",
+          "source_sha256": "4313600176ccfa787d12d0f447d1144bdfbfd71a373d63c505725b93d4b3f332"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "nextbigproduct.com",
+      "product": "weworkbuddy",
+      "store_directory": "nextbigproduct.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_NextBigProduct_exact_accepted_listing_ID",
+          "listing_id": 5901,
+          "submission_reference_url": "https://nextbigproduct.com/list-product?pid=5901",
+          "canonical_product_url": "https://nextbigproduct.com/product/weworkbuddy",
+          "receipt_text": [
+            "SUBMISSION COMPLETE",
+            "Your product is ready to launch",
+            "Listing submitted",
+            "Keep the free plan and verify your domain",
+            "Free launch without verification"
+          ],
+          "server_accepted_submit_actions": 1,
+          "normal_submit_actions_total": 1,
+          "server_rejected_CSRF_actions": null,
+          "server_rejected_empty_rich_description_actions": null,
+          "recorded_at_utc": "2026-10-12T05:02:20.042Z",
+          "receipt_scope": "One accepted free native listing intake. Rejected attempts, launch-schedule verification and a landing-soon public placeholder are separate; public listing not inferred.",
+          "source_record": "runs/round23-nextbigproduct-weworkbuddy-native-accepted-2026-10-12.json",
+          "source_sha256": "175654b3a602f28d4a58b7de5c6ff8f739e79cd9d8e6089ff0f6577776c9027f"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "saascss.com",
+      "product": "weworkbuddy",
+      "store_directory": "saascss.com",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_Gmail_exact_unique_Sent_without_ephemeral_notice",
+          "matching_Sent_rows": 1,
+          "normal_send_actions": 1,
+          "send_notice_observed": false,
+          "recipient_matched": true,
+          "subject_matched": true,
+          "product_domain_in_exact_Sent_query": true,
+          "exact_native_search_address_verified": true,
+          "task_subject_row_verified": true,
+          "Sent_not_Draft_scope_verified": true,
+          "prior_task_dedup0_verified": true,
+          "task_Gmail_account_matched": true,
+          "recorded_at_utc": "2026-10-12T05:26:40.723Z",
+          "receipt_scope": "One exact native Gmail in:sent recipient/subject/product-domain result confirms provider sending only. Ephemeral toast was not observed. A saved Draft cannot satisfy this exact in:sent proof; no directory acknowledgement, dedicated form intake, approval, free publication promise or public S listing is inferred.",
+          "source_record": "runs/round23-saascss-weworkbuddy-native-unique-Sent-2026-10-12.json",
+          "source_sha256": "11ab2a71a38dc26fb9f17f6c565743e887bfc114efce314e8aead88aebcf7f8a"
+        }
+      ]
+    },
+    {
+      "category": "directories",
+      "target_key": "wechalet.cn",
+      "product": "weworkbuddy",
+      "store_directory": "wechalet.cn",
+      "grade": "A",
+      "store_status": "submitted",
+      "actual": true,
+      "actual_result": true,
+      "actual_submission": true,
+      "submitted": true,
+      "confirmed": true,
+      "counts_as_submission": true,
+      "receipt_proofs": [
+        {
+          "kind": "native_directory_receipt",
+          "receipt_text": "申请成功",
+          "formal_application_intake": true,
+          "recorded_at_utc": "2026-10-12T05:39:24.885Z",
+          "receipt_scope": "Zero-charge directory-consideration request received; public listing price, acceptance and publication are not verified.",
+          "source_record": "runs/round23-wechalet-weworkbuddy-native-accepted-2026-10-12.json",
+          "source_sha256": "db7a5c06e9211ec38b9f3c04ead332e1823c7b3b34386d5ec3871fd4b289dce9"
+        }
+      ]
+    }
+  ],
+  "historical_prior_snapshot": {
+    "path": "runs/round19-store-reconciliation-before-refresh-2026-10-10.json",
+    "sha256": "0164765f2f237cbb5418a39c5c888fa58e6cd2eecf6c0578fc37443e3d96b0a8",
+    "confirmed_as_of_snapshot": 120
+  },
+  "all_confirmed_actual_submission_flags_consistent": true,
+  "root_validation": "runs/round19-root-three-category-validation-2026-10-10.json",
+  "final_independent_validation_pending": true,
+  "final_independent_validation": "runs/round19-final-main-independent-validation-2026-10-10.json",
+  "previous_round19_reconciliation_archive": "runs/round20-store-reconciliation-before-finalsync-2026-10-10.json",
+  "overall_goal_status": "in_progress",
+  "all_candidates_attempted": false,
+  "global_window_inventory_count_not_asserted": true,
+  "round22_prior_reconciliation_archive": {
+    "path": "runs/round22-editorial-next-store-reconciliation-baseline-2026-10-12.json",
+    "sha256": "36c26f55bf5f67654d6f303c8c6d5dc39b5acaa433f1b9d93ca06ea61ddf718c",
+    "old149_mapping_prefix_exact": true
+  },
+  "round22_reconciliation_record": "runs/round22-three-category-reconciliation-2026-10-12.json",
+  "directory_actions_separate_from_formal_intake": {
+    "total": 103,
+    "general_contact_inquiries": 3,
+    "formal_application_or_listing_records": 90,
+    "email_request_records": 10,
+    "form_receipt_records": 21,
+    "documented_public_API_records": 3,
+    "historical_channel_unspecified_records": 66,
+    "scope": "Legacy confirmed_directory_applications means confirmed directory-related product/target records. Identifiable email requests, forms, documented public API creations, general-contact inquiries and historically unspecified channels are separate; these are record counts, not physical Send counts. Email delivery alone does not establish a reply, dedicated intake or approval."
+  },
+  "validation_scope": "Prior validation fields retain their original dated scope; current round23 identity/evidence validation is linked separately.",
+  "round22_validation_record": "runs/round22-editorial-next-finalsync-preparation-validation-2026-10-12.json",
+  "round23_prior_reconciliation_archive": {
+    "path": "runs/round23-Store-reconciliation-before-delta-2026-10-12.json",
+    "sha256": "cf31dffeec74586c12931381ea24b6b1ef240c26341e1b93bf12e72d6ede69f3",
+    "old177_mapping_prefix_exact": true
+  },
+  "round23_reconciliation_record": "runs/round23-three-category-reconciliation-2026-10-12.json",
+  "round23_validation_record": "runs/round23-editorial-next-finalsync-preparation-validation-2026-10-12.json"
+}

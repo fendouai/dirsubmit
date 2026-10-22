@@ -14,6 +14,26 @@
 
 ![dirsubmit demo](assets/screenshot.png)
 
+<!-- submission-results:start -->
+## 当前提交结果（2026-10-20 整理）
+
+[查看全部成功、待审核及未成功明细](docs/submission-records/README.md)。覆盖 Botstest、WarmQuant、WeWorkBuddy，按目录、GitHub 和文章投稿三类逐产品列出原因及下一步。
+
+| 当前结果 | 产品目标记录数 |
+|---|---:|
+| S：已公开收录或合并 | 38 |
+| A：申请已接收、开放 PR 或稿件已投递，待审核 | 266 |
+| B：可执行但未发送 | 0 |
+| C：条件、人工步骤或实际回执未解决 | 2545 |
+| D：不适配、仅付费、关闭、拒绝等 | 1104 |
+| U：未实测或证据不足 | 2047 |
+
+**已确认提交共 304 条，其中真正公开或合并 38 条；待审核不等于收录成功。** 这些是产品与目标的独立记录，不是 304 个站点。已知清单共 2,000 个目标，不能当作全部已经尝试。100 个新增站点专项为 **5/100**，尚未完成。
+
+本次汇总现有证据，没有重新联网核验所有结果；具体核验时间、结果链接与失败原因见[完整记录](docs/submission-records/README.md)。
+<!-- submission-results:end -->
+
+
 ## 亮点
 
 1. **AI 差异化文案** — 为每个目录生成不同的 tagline/简介/分类/标签，避免复制粘贴被降权。
@@ -67,6 +87,7 @@ dirsubmit status --check
 | [部署](docs/deployment.zh-CN.md) | 安装、依赖、CDP 配置、排障 |
 | [配置](docs/configuration.zh-CN.md) | `product.yaml`、`.env`、食谱格式、LLM 后端 |
 | [渠道](docs/channels.zh-CN.md) | 渠道清单、三层模型、OAuth 申请、分发地图 |
+| [三类提交清单](docs/submission-catalog/README.md) | 目录导航站、GitHub awesome 仓库和文章投稿渠道；逐产品等级、实际回执、待办与离线筛选页 |
 
 ## 命令
 
