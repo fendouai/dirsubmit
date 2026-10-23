@@ -1,0 +1,54 @@
+{
+  "name": "SaaSCity",
+  "slug": "saascity",
+  "submit_url": "https://saascity.io/submit",
+  "homepage": "https://saascity.io",
+  "dr": 64,
+  "tier": "auto",
+  "requires_auth": false,
+  "verify": {
+    "type": "search",
+    "url": "https://saascity.io/search?q={name}"
+  },
+  "fields": [
+    {
+      "name": "name",
+      "type": "text",
+      "required": true,
+      "source": "name",
+      "selectors": [
+        "input[name='name']",
+        "input[name='title']"
+      ]
+    },
+    {
+      "name": "url",
+      "type": "url",
+      "required": true,
+      "source": "url",
+      "selectors": [
+        "input[name='url']",
+        "input[name='website']"
+      ]
+    },
+    {
+      "name": "tagline",
+      "type": "text",
+      "required": false,
+      "source": "ai.tagline",
+      "selectors": [
+        "input[name='tagline']"
+      ]
+    },
+    {
+      "name": "description",
+      "type": "textarea",
+      "required": true,
+      "source": "ai.description",
+      "selectors": [
+        "textarea[name='description']",
+        "textarea"
+      ]
+    }
+  ]
+}

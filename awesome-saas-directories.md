@@ -27,6 +27,7 @@
 | API List | — | https://apilist.fun | 开源 API 列表，GitHub PR |
 | Open Alternative | 51 | https://openalternative.co | 开源替代品目录，GitHub PR |
 | BuiltWith | — | https://builtwith.com | 自动探测站点技术栈，**无需提交** |
+| SaaSCity | 64 | https://saascity.io/submit | 免费表单提交，人工审核约 24h 上线 |
 
 > 说明：真正的「全自动」极少。除 rundown.ai 外，其余都是 GitHub-PR 型开源目录（`dirsubmit` 可扩展 `git` 提交模式）。
 
